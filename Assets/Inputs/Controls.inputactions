@@ -1,0 +1,34 @@
+{
+    "name": "Controls",
+    "maps": [
+        {
+            "name": "AM",
+            "id": "8e1a44de-6c3c-4218-803d-c25930fd072e",
+            "actions": [
+                {
+                    "name": "Grab",
+                    "type": "Button",
+                    "id": "0825c8bf-5d0c-4521-820c-b67e3b89707a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e1595db2-f58f-4923-bfdf-8b45ec841dd8",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
