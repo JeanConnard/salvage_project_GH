@@ -7,11 +7,12 @@ public class StartMessage : MonoBehaviour
 {
     [SerializeField] float currentTime = 0f, maxTime = 7f;
     [SerializeField] public event Action OnMessageRead = null;
-
+    [SerializeField] StartMessage startMessage;
 
     void Start()
     {
         gameObject.SetActive(true);
+
     }
 
     // Update is called once per frame
@@ -26,9 +27,8 @@ public class StartMessage : MonoBehaviour
         {
             gameObject.SetActive(false);
             OnMessageRead?.Invoke();
-            //lancer timer zombie (bool true)
-
         }
         return _current;
     }
+
 }

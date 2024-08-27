@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CraftTablePanel : MonoBehaviour
-{   
+{
+    [SerializeField] GameObject craftPanel;
+    [SerializeField] GameObject cursor;
     void Start()
     {
         
@@ -16,6 +18,15 @@ public class CraftTablePanel : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        gameObject.SetActive(!gameObject.activeInHierarchy);
+
+        craftPanel.gameObject.SetActive(true);
+        cursor.SetActive(false);
+        Debug.Log("marche");
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        craftPanel.gameObject.SetActive(false);
+        cursor.SetActive(true);
+        Debug.Log("marche pô");
     }
 }
