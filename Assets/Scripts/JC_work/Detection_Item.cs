@@ -58,8 +58,10 @@ public class Detection_Item : MonoBehaviour
     //{
     //    Debug.Log("camera On");
     //    Vector2 look = lookInput.ReadValue<Vector2>();
-    //    Vector2 rotation = look * rotationSpeed * Time.deltaTime;
-    //    transform.Rotate(Vector3.forward, rotation.y);
+    //    //Vector2 rotation = look * rotationSpeed * Time.deltaTime;
+    //    //transform.Rotate(Vector3.forward, rotation.y);
+
+    //    transform.eulerAngles += transform.up * look.y * rotationSpeed * Time.deltaTime;
     //}
 
     void Detect()
