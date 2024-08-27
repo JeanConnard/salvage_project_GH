@@ -37,4 +37,5 @@ public class ZombieAI : MonoBehaviour
         Debug.Log("Zombie attaque le joueur !");
         lastAttackTime = Time.time;
     }
+    //TEST
 }
