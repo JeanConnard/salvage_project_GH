@@ -10,18 +10,18 @@ public class ZombieSpawner : MonoBehaviour
     [SerializeField] float timeSinceStart = 0f;
     [SerializeField] Transform[] spawnPoints;
     [SerializeField] bool canStart = false;
+    [SerializeField] StartMessage startMessage;
     
-    public bool CanStart => canStart;
 
     void Start()
     {
-        
+        //startMessage = GetComponent<StartMessage>();
+        startMessage.OnMessageRead += SetBool;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (canStart)
+       if (canStart)
             ZombieTimer(ref timeSinceStart, spawnInterval);
     }
     void SpawnZombies()
@@ -41,5 +41,10 @@ public class ZombieSpawner : MonoBehaviour
             SpawnZombies();
         }
         return _current;
+    }
+    void SetBool()
+    {
+        canStart = true;
+        Debug.Log(canStart);
     }
 }

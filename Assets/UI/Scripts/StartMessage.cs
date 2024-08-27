@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StartMessage : MonoBehaviour
 {
-    [SerializeField] float currentTime = 0f, maxTime = 5.5f;
+    [SerializeField] float currentTime = 0f, maxTime = 7f;
+    [SerializeField] public event Action OnMessageRead = null;
+
 
     void Start()
     {
@@ -22,6 +25,7 @@ public class StartMessage : MonoBehaviour
         if (_current >= _max)
         {
             gameObject.SetActive(false);
+            OnMessageRead?.Invoke();
             //lancer timer zombie (bool true)
 
         }
