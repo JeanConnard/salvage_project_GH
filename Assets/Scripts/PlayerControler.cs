@@ -8,9 +8,13 @@ public class PlayerControler : MonoBehaviour
     private Controls controls;
     private InputAction moveinput;
     private InputAction lookInput;
-    public float moveSpeed = 5f, rotationSpeed = 200f;
-    public Transform playerCamera;
-    private float xRotation = 0f;
+    [SerializeField] float moveSpeed = 5f, rotationSpeed = 200f;
+    [SerializeField]  Transform playerCamera;
+
+ 
+    [SerializeField] float xRotation = 0f;
+    [SerializeField] float clampDown = -90f;
+    [SerializeField] float clampUp = 90f;
 
     private void Awake()
     {
@@ -29,13 +33,12 @@ public class PlayerControler : MonoBehaviour
         moveinput.Disable();
         lookInput.Disable();
     }
-    // Start is called before the first frame update
+    
     void Start()
     {
-        
+     
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector2 move = moveinput.ReadValue<Vector2>();
@@ -53,9 +56,12 @@ public class PlayerControler : MonoBehaviour
     { 
         Vector2 delta = look * rotationSpeed * Time.deltaTime;
         transform.Rotate(Vector3.up, delta.x); //turn the Player On Y axe (vertical)
+        
         //camera up/down
-        xRotation -= delta.y;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-        playerCamera.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        //xRotation -= delta.y;
+        //xRotation = Mathf.Clamp(xRotation, clampDown, clampUp);
+        //playerCamera.gameObject.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+      
+      
     }
 }

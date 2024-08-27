@@ -110,7 +110,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""12528c4e-b2cc-435d-95e7-6aa1dc151501"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -121,7 +121,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""c3241c1b-23bb-437e-bdc5-3d1295831ddc"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
