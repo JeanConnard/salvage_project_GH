@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class toto : MonoBehaviour
+public class CraftTablePanel : MonoBehaviour
 {
-    int health = 10;
+    [SerializeField] float currentTime = 0f, maxTime= 5.0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +15,10 @@ public class toto : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+    private void OnTriggerEnter(Collider other)
     {
         
     }
