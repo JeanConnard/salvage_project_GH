@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scripts/JC_work/Pickup_Item.cs.meta
-guid: 3eb27b4a2cdd42a42837e41d12d13d3d
-========
-guid: 243d36969e747a247b2530ac986c244d
->>>>>>>> Mathieu:Assets/Scripts/ZombieAI.cs.meta
+guid: 2bc44cdd46d4a494da2930598c836666
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
