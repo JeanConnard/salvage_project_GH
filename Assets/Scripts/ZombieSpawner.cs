@@ -20,7 +20,7 @@ public class ZombieSpawner : MonoBehaviour
     void Update()
     {
         timeSinceStart += Time.deltaTime;
-        if (timeSinceStart <= spawnInterval)
+        if (timeSinceStart >= spawnInterval)
         {
             SpawnZombies();
         }
