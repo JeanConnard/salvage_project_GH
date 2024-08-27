@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CraftTablePanel : MonoBehaviour
-{
-    [SerializeField] float currentTime = 0f, maxTime= 5.0f;
-
-
-    // Start is called before the first frame update
+{   
     void Start()
     {
         
@@ -20,6 +16,6 @@ public class CraftTablePanel : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        
+        gameObject.SetActive(!gameObject.activeInHierarchy);
     }
 }
