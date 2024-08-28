@@ -26,13 +26,18 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] bool isAttacking = false;
 
     //Animator
-    private AnimatorParam animatorParam;
+    //private AnimatorParam animatorParam;
+    [SerializeField] Animator characterAnimator = null;
+    [SerializeField] CharacterAnimation animations = null;
+    public CharacterAnimation Animations => animations;
 
     private void Awake()
     {
         controls = new Controls();
-        Animator animator = GetComponent<Animator>();
-        animatorParam = new AnimatorParam();
+        animations = GetComponent<CharacterAnimation>();
+        characterAnimator = GetComponent<Animator>();
+        //Animator animator = GetComponent<Animator>();
+        //animatorParam = new AnimatorParam();
     }
 
     private void OnEnable()
@@ -75,6 +80,12 @@ public class PlayerControler : MonoBehaviour
     {
         Vector3 moveVector = new Vector3(move.x, 0, move.y);
         transform.Translate(moveVector * moveSpeed * Time.deltaTime);
+
+        animations.UpdateForwardAnimatorParam(move.y);
+        animations.UpdateRightAnimatorParam(move.x);
+
+        //transform.position += transform.forward * _moveDir.y * moveSpeed * Time.deltaTime;
+        //transform.position += transform.right * _moveDir.x * moveSpeed * Time.deltaTime;
 
     }
     private void Look(Vector2 look) //horizontal rotation (vertical is on Detection_Item)
