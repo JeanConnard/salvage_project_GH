@@ -5,12 +5,12 @@ using UnityEngine.InputSystem.LowLevel;
 
 public class CarBehaviour : DestructibleElement_Parent
 {
-    // Start is called before the first frame update
+
     void Start()
     {
-        health = 2;
+        health = 5;
 
-        OnDestruction += Destruction;
+        OnDestruction += Explosion;
     }
 
     void Update()
@@ -18,14 +18,19 @@ public class CarBehaviour : DestructibleElement_Parent
         
     }
 
-    void Destruction()
+    void Explosion()
     {
-        Instantiate(rope,transform.position, Quaternion.identity);
-        Instantiate(rope,transform.position, Quaternion.identity);
-        Instantiate(rope,transform.position, Quaternion.identity);
-
         gameObject.SetActive(false);
-        //Destroy(gameObject);
         
+        float _random = Random.Range(-0.1f, 0.1f);
+        Vector3 _spawnPosition = transform.position + transform.forward * _random + transform.up * 1;
+        
+        Instantiate(fuel, _spawnPosition, transform.rotation);
+        Instantiate(fuel, _spawnPosition, transform.rotation);
+        Instantiate(enginePart, _spawnPosition, transform.rotation);
+        Instantiate(rope, _spawnPosition, transform.rotation);
+        Instantiate(trash, _spawnPosition, transform.rotation);
+        Instantiate(trash, _spawnPosition, transform.rotation);
+        Instantiate(trash, _spawnPosition, transform.rotation);
     }
 }

@@ -17,8 +17,8 @@ public class Detection_Item : MonoBehaviour
     [SerializeField] InputAction lookInput = null;
     [SerializeField] int rotationSpeed = 200;
     [SerializeField] float xRotation = 0f;
-    [SerializeField] float clampUp = -20f;
-    [SerializeField] float clampDown = 20f;
+    [SerializeField] float clampDown = -20f;
+    [SerializeField] float clampUp = 20f;
 
     //RayCast
     [SerializeField] float detectionRange = 20;
@@ -66,7 +66,7 @@ public class Detection_Item : MonoBehaviour
         //transform.Rotate(Vector3.right, _rotation.y);
         
         xRotation -= _rotation.y;
-        xRotation = Mathf.Clamp(xRotation, clampUp, clampDown);
+        xRotation = Mathf.Clamp(xRotation, clampDown, clampUp);
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
     }
