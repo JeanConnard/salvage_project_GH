@@ -27,9 +27,10 @@ public class Detection_Item : MonoBehaviour
     [SerializeField] bool canSelect = true;
 
     [SerializeField] Pickup_Item grab = null;
+    [SerializeField] TargetSwap reticleRef;
 
     Ray screenRay = new Ray();
-    bool detected = false;
+    //bool detected = false;  // Ne semblait pas être utilisé  //       //          //          //
 
    
     private void Awake()
@@ -49,6 +50,7 @@ public class Detection_Item : MonoBehaviour
 
         OnHit += grab.GrabPossibility;
         OnTargetDetected += grab.ObjectDefine;
+        OnHit += reticleRef.UpdateBool;
     }
 
     void Update()

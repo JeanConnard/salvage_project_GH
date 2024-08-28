@@ -40,6 +40,7 @@ public class Pickup_Item : MonoBehaviour
     
     public Action<int, int, int, int, int, int> OnValueChanged = null;      //changes UI BottomPanel int
     public Action<bool, bool, bool, bool, bool, bool> OnBoolChange = null;  //changes UI BottomPanel bool
+    public Action<bool> OnTargetAquired = null;
 
     ObjectPanelManager objectPanelRef;
 
@@ -69,7 +70,7 @@ public class Pickup_Item : MonoBehaviour
 
     public void GrabPossibility(bool _value)    //to know if the raycast targets an object
     {
-        canGrab = _value;
+        canGrab = _value;        
     }
 
     public void ObjectDefine(RaycastHit _hitItem)   //to know what kind of object is targeted
@@ -97,12 +98,12 @@ public class Pickup_Item : MonoBehaviour
         if(_value == 4) woodCount++;
         if(_value == 5) engineCount++;
 
-        ropeComplete = ropeCount >= 2;
-        fuelComplete = fuelCount >= 2;
-        sandComplete = sandCount >= 2;
-        fabricComplete = fabricCount >= 2;
-        woodComplete = woodCount >= 2;
-        engineComplete = engineCount >= 2;
+        ropeComplete = ropeCount >= 5;
+        fuelComplete = fuelCount >= 3;
+        sandComplete = sandCount >= 5;
+        fabricComplete = fabricCount >= 20;
+        woodComplete = woodCount >= 10;
+        engineComplete = engineCount >= 1;
 
         OnValueChanged.Invoke(ropeCount, fuelCount, sandCount, fabricCount, woodCount, engineCount);
         if (fuelCount >= 2)

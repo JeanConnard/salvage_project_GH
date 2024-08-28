@@ -14,8 +14,7 @@ public class ObjectPanelManager : MonoBehaviour
                           sandComplete = false,
                           fabricComplete = false,
                           woodComplete = false,
-                          engineComplete = false;
-    public Action<int> OnTest = null;
+                          engineComplete = false;    
     void Start()
     {
         //Invoke("Init", 1);
@@ -33,14 +32,11 @@ public class ObjectPanelManager : MonoBehaviour
         craftBTN.onClick.AddListener(CraftHotAirBalloon);
         missingItemTXT.gameObject.SetActive(true);
         //hide les éléments du panel
-        //afficher message de réussite
-        OnTest(2);
-
+        //afficher message de réussite     
     }
     void CraftHotAirBalloon()
     {
         //instantiate la montgolfière (définir l'endroit)
-
     }
     public void UpdateBoolResult(bool _result)
     {

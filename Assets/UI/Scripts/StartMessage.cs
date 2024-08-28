@@ -6,13 +6,12 @@ using UnityEngine;
 public class StartMessage : MonoBehaviour
 {
     [SerializeField] float currentTime = 0f, maxTime = 7f;
-    [SerializeField] public event Action OnMessageRead = null;
-    [SerializeField] StartMessage startMessage;
+    [SerializeField] public event Action OnMessageRead = null;    
+    [SerializeField] float delayTime = 1f;
 
     void Start()
     {
-        gameObject.SetActive(true);
-
+        Invoke("Init", delayTime);
     }
 
     // Update is called once per frame
@@ -29,6 +28,10 @@ public class StartMessage : MonoBehaviour
             OnMessageRead?.Invoke();
         }
         return _current;
+    }
+    void Init()
+    {
+        gameObject.SetActive(true);
     }
 
 }

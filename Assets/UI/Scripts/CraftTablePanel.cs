@@ -6,7 +6,8 @@ public class CraftTablePanel : MonoBehaviour
 {
     [SerializeField] GameObject craftPanel;
     [SerializeField] GameObject cursor;
-    
+    [SerializeField] TargetSwap reticleRef;
+
     void Start()
     {
         
@@ -23,12 +24,12 @@ public class CraftTablePanel : MonoBehaviour
         if (!_target) return;
         craftPanel.gameObject.SetActive(true);
         cursor.SetActive(false);
-        Debug.Log("marche");
+        reticleRef.gameObject.SetActive(false);
     }
     private void OnTriggerExit(Collider other)
     {
         craftPanel.gameObject.SetActive(false);
         cursor.SetActive(true);
-        Debug.Log("marche pô");
+        reticleRef.gameObject.SetActive(true);
     }
 }
