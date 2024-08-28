@@ -6,6 +6,7 @@ public class CraftTablePanel : MonoBehaviour
 {
     [SerializeField] GameObject craftPanel;
     [SerializeField] GameObject cursor;
+    
     void Start()
     {
         
