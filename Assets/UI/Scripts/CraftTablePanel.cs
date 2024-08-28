@@ -19,7 +19,8 @@ public class CraftTablePanel : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-
+        PlayerControler _target = other.GetComponent<PlayerControler>();
+        if (!_target) return;
         craftPanel.gameObject.SetActive(true);
         cursor.SetActive(false);
         Debug.Log("marche");

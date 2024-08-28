@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,8 +12,8 @@ public enum ObjectType
     NONE,
     ROPE,
     FUEL,
-    FABRIC,
     SAND,
+    FABRIC,
     WOOD,
     ENGINE_PIECE
 }
@@ -29,10 +30,18 @@ public class Pickup_Item : MonoBehaviour
     [SerializeField] bool canGrab = false;
 
     [SerializeField] GameObject itemToInteract;
-
-    [SerializeField] int ropeCount = 0, fuelCount = 0, fabricCount = 0, sandCount = 0, woodCount = 0, engineCount = 0;
-
+    
     [SerializeField] ObjectType objectType = ObjectType.NONE;
+    
+    [SerializeField] BottomPanel panelRef;
+    [SerializeField] int ropeCount = 0, fuelCount = 0, sandCount = 0, fabricCount = 0, woodCount = 0, engineCount = 0;
+    [SerializeField] bool ropeComplete = false, fuelComplete = false, sandComplete = false, 
+                         fabricComplete = false, woodComplete = false, engineComplete = false;
+    
+    public Action<int, int, int, int, int, int> OnValueChanged = null;      //changes UI BottomPanel int
+    public Action<bool, bool, bool, bool, bool, bool> OnBoolChange = null;  //changes UI BottomPanel bool
+
+    ObjectPanelManager objectPanelRef;
 
     private void Awake()
     {
@@ -48,7 +57,9 @@ public class Pickup_Item : MonoBehaviour
     }
     void Start()
     {
-       
+        OnValueChanged += panelRef.SetCountText;
+        //OnBoolChanged += objectPanelRef.UpdateBoolResult;
+        //OnComplete += panelRef.SetVisibility;
     }
 
     void Update()
@@ -72,9 +83,7 @@ public class Pickup_Item : MonoBehaviour
         {
             Destroy(itemToInteract);
             OnObjectGrab?.Invoke(itemToInteract.layer); //for the UI subcription
-            AddToList(itemToInteract.layer - 7);
-            Debug.Log(ropeCount);
-            //Other version to add +1 to 6 differents lists
+            AddToList(itemToInteract.layer - 7);              
         }
     }
 
@@ -83,9 +92,25 @@ public class Pickup_Item : MonoBehaviour
     {
         if (_value == 0) ropeCount++;
         if (_value == 1) fuelCount++;
-        if(_value == 2) fabricCount++;
-        if(_value == 3) sandCount++;
+        if(_value == 2) sandCount++;
+        if(_value == 3) fabricCount++;
         if(_value == 4) woodCount++;
         if(_value == 5) engineCount++;
+
+        ropeComplete = ropeCount >= 2;
+        fuelComplete = fuelCount >= 2;
+        sandComplete = sandCount >= 2;
+        fabricComplete = fabricCount >= 2;
+        woodComplete = woodCount >= 2;
+        engineComplete = engineCount >= 2;
+
+        OnValueChanged.Invoke(ropeCount, fuelCount, sandCount, fabricCount, woodCount, engineCount);
+        if (fuelCount >= 2)
+            OnBoolChange?.Invoke(ropeComplete, fuelComplete, sandComplete, fabricComplete, woodComplete, engineComplete);
+        //OnBoolChanged?.Invoke(objectPanelRef.fuelComplete);
+        //    panelRef.UpdateBoolResult(panelRef.fuelComplete);
+
+        if(ropeComplete && fuelComplete && sandComplete && fabricComplete && woodComplete && engineComplete)
+            objectPanelRef.SetVisibility();
     }
 }
