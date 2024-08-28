@@ -12,11 +12,15 @@ public class Detection_Item : MonoBehaviour
     public event Action<RaycastHit> OnTargetDetected = null;
     public event Action<bool> OnHit = null;
 
-    //for the verticale cam rotation
-    //[SerializeField] Controls controls = null;
-    //[SerializeField] InputAction lookInput = null;
-    //[SerializeField] int rotationSpeed = 200;
+    //Verticale cam rotation
+    [SerializeField] Controls controls = null;
+    [SerializeField] InputAction lookInput = null;
+    [SerializeField] int rotationSpeed = 200;
+    [SerializeField] float xRotation = 0f;
+    [SerializeField] float clampUp = -20f;
+    [SerializeField] float clampDown = 20f;
 
+    //RayCast
     [SerializeField] float detectionRange = 20;
     [SerializeField] LayerMask itemLayer = 0;   //in Unity, put all 6 layers manually
     [SerializeField] Transform objectSelected = null;
@@ -27,17 +31,17 @@ public class Detection_Item : MonoBehaviour
     Ray screenRay = new Ray();
     bool detected = false;
 
-    //for the verticale cam rotation
-    //private void Awake()
-    //{
-    //    controls = new Controls();
-    //}
+   
+    private void Awake()
+    {
+        controls = new Controls();
+    }
 
-    //private void OnEnable()
-    //{
-    //    lookInput = controls.AM.rotation;
-    //    lookInput.Enable();
-    //}
+    private void OnEnable()
+    {
+        lookInput = controls.AM.rotation;
+        lookInput.Enable();
+    }
     void Start()
     {
         grab = GetComponentInParent<Pickup_Item>();
@@ -49,20 +53,23 @@ public class Detection_Item : MonoBehaviour
 
     void Update()
     {
-        //RotationCam();
+        RotationCam();
         Detect();
     }
 
-    // Tentative de correction de la cam axe vertical. Echec
-    //void RotationCam()
-    //{
-    //    Debug.Log("camera On");
-    //    Vector2 look = lookInput.ReadValue<Vector2>();
-    //    //Vector2 rotation = look * rotationSpeed * Time.deltaTime;
-    //    //transform.Rotate(Vector3.forward, rotation.y);
+    void RotationCam()  //Vertical rotation
+    {
+        Vector2 _look = lookInput.ReadValue<Vector2>();
+        Vector2 _rotation = _look * rotationSpeed * Time.deltaTime;
+        
+        //Ancienne version à la place de ci-dessous
+        //transform.Rotate(Vector3.right, _rotation.y);
+        
+        xRotation -= _rotation.y;
+        xRotation = Mathf.Clamp(xRotation, clampUp, clampDown);
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
-    //    transform.eulerAngles += transform.up * look.y * rotationSpeed * Time.deltaTime;
-    //}
+    }
 
     void Detect()
     {   

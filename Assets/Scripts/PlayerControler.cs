@@ -5,16 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerControler : MonoBehaviour
 {
+    //Movement and Rotation
     private Controls controls;
     private InputAction moveinput;
     private InputAction lookInput;
 
     [SerializeField] float moveSpeed = 5f, rotationSpeed = 200f;
-    [SerializeField]  Transform playerCamera;
-
-    [SerializeField] float xRotation = 0f;
-    [SerializeField] float clampDown = -90f;
-    [SerializeField] float clampUp = 90f;
 
     //Attack
     [SerializeField] InputAction attack = null;
@@ -72,18 +68,15 @@ public class PlayerControler : MonoBehaviour
     {
         Vector3 moveVector = new Vector3(move.x, 0, move.y);
         transform.Translate(moveVector * moveSpeed * Time.deltaTime);
+      
     }
-    private void Look(Vector2 look) 
+    private void Look(Vector2 look) //horizontal rotation (vertical is on Detection_Item)
     { 
         Vector2 delta = look * rotationSpeed * Time.deltaTime;
-        transform.Rotate(Vector3.up, delta.x); //turn the Player On Y axe (vertical)
-        
-        //camera up/down
-        //xRotation -= delta.y;
-        //xRotation = Mathf.Clamp(xRotation, clampDown, clampUp);
-        //playerCamera.gameObject.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        transform.Rotate(Vector3.up, delta.x); 
     }
 
+    #region Attack
     public void Attack()
     {
         if (!canAttack || !isAttacking) return;
@@ -112,4 +105,5 @@ public class PlayerControler : MonoBehaviour
     {
         isAttacking = _context.ReadValueAsButton();
     }
+    #endregion 
 }
