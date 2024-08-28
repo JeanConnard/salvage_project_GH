@@ -21,16 +21,13 @@ public class ZombieSpawner : MonoBehaviour
 
     void Update()
     {
-//<<<<<<< HEAD
        if (canStart)
             ZombieTimer(ref timeSinceStart, spawnInterval);
-//=======
         timeSinceStart += Time.deltaTime;
         if (timeSinceStart >= spawnInterval)
         {
             SpawnZombies();
         }
-//>>>>>>> Patrick
     }
     void SpawnZombies()
     {

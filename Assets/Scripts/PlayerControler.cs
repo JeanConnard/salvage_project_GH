@@ -25,9 +25,14 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] bool canAttack = true;
     [SerializeField] bool isAttacking = false;
 
+    //Animator
+    private AnimatorParam animatorParam;
+
     private void Awake()
     {
         controls = new Controls();
+        Animator animator = GetComponent<Animator>();
+        animatorParam = new AnimatorParam();
     }
 
     private void OnEnable()
@@ -46,7 +51,7 @@ public class PlayerControler : MonoBehaviour
         lookInput.Disable();
         attack.Disable();
     }
-    
+
     void Start()
     {
         attack.performed += SetIsAttacking;
@@ -60,6 +65,8 @@ public class PlayerControler : MonoBehaviour
         Move(move);
         Look(look);
 
+        //met a jour les param de l'animator pour le move
+
         if (!canAttack)
             currentTime = IncreaseTime(currentTime, maxTime);
         Attack();
@@ -68,12 +75,12 @@ public class PlayerControler : MonoBehaviour
     {
         Vector3 moveVector = new Vector3(move.x, 0, move.y);
         transform.Translate(moveVector * moveSpeed * Time.deltaTime);
-      
+
     }
     private void Look(Vector2 look) //horizontal rotation (vertical is on Detection_Item)
-    { 
+    {
         Vector2 delta = look * rotationSpeed * Time.deltaTime;
-        transform.Rotate(Vector3.up, delta.x); 
+        transform.Rotate(Vector3.up, delta.x);
     }
 
     #region Attack
@@ -105,5 +112,5 @@ public class PlayerControler : MonoBehaviour
     {
         isAttacking = _context.ReadValueAsButton();
     }
-    #endregion 
+    #endregion Attack
 }
