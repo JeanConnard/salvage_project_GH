@@ -4,28 +4,35 @@ using UnityEngine;
 
 public class ZombieSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject zombiePreFab;
-    [SerializeField] private float spawnInterval = 360f; //6 minutes (360 secondes)
-    [SerializeField] private int numberOfZombiesToSpawn = 20;
-    private float timeSinceStart = 0f; //time elaspe from start game
-    [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] GameObject zombiePreFab;
+    [SerializeField] float spawnInterval = 360f; //6 minutes (360 secondes)
+    [SerializeField] int numberOfZombiesToSpawn = 20;
+    [SerializeField] float timeSinceStart = 0f;
+    [SerializeField] Transform[] spawnPoints;
+    [SerializeField] bool canStart = false;
+    [SerializeField] StartMessage startMessage;
+    
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        //startMessage = GetComponent<StartMessage>();
+        startMessage.OnMessageRead += SetBool;
     }
 
-    // Update is called once per frame
     void Update()
     {
+//<<<<<<< HEAD
+       if (canStart)
+            ZombieTimer(ref timeSinceStart, spawnInterval);
+//=======
         timeSinceStart += Time.deltaTime;
         if (timeSinceStart >= spawnInterval)
         {
             SpawnZombies();
         }
+//>>>>>>> Patrick
     }
-    private void SpawnZombies()
+    void SpawnZombies()
     {
         for (int i = 0; i < numberOfZombiesToSpawn; i++) 
         {
@@ -33,5 +40,19 @@ public class ZombieSpawner : MonoBehaviour
             Transform spawnPoint = spawnPoints[spawnIndex];
             Instantiate(zombiePreFab, spawnPoint.position, spawnPoint.rotation);
         }
+    }
+    float ZombieTimer(ref float _current, float _max)
+    {
+        _current += Time.deltaTime;
+        if (_current >= _max)
+        {
+            SpawnZombies();
+        }
+        return _current;
+    }
+    void SetBool()
+    {
+        canStart = true;
+        Debug.Log(canStart);
     }
 }
