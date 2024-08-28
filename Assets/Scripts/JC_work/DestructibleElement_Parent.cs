@@ -7,11 +7,24 @@ public class DestructibleElement_Parent : MonoBehaviour
 {
     public event Action OnDestruction = null;
     [SerializeField] protected int health = 0;
-    [SerializeField] protected GameObject rope = null; 
+
+    [SerializeField] protected GameObject rope = null;
+    [SerializeField] protected GameObject fuel = null;
+    [SerializeField] protected GameObject wood = null;
+    [SerializeField] protected GameObject sand = null;
+    [SerializeField] protected GameObject fabric = null;
+    [SerializeField] protected GameObject enginePart = null;
+    [SerializeField] protected GameObject trash = null;
 
     void Start()
     {
-        rope = GetComponent<GameObject>();
+        //rope = GetComponent<GameObject>();
+        //fuel = GetComponent<GameObject>();
+        //wood = GetComponent<GameObject>();
+        //sand = GetComponent<GameObject>();
+        //fabric = GetComponent<GameObject>();
+        //enginePart = GetComponent<GameObject>();
+        //trash = GetComponent<GameObject>();
     }
 
     void Update()
