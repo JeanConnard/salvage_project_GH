@@ -25,9 +25,19 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] bool canAttack = true;
     [SerializeField] bool isAttacking = false;
 
+    //Animator
+    //private AnimatorParam animatorParam;
+    [SerializeField] Animator characterAnimator = null;
+    [SerializeField] CharacterAnimation animations = null;
+    public CharacterAnimation Animations => animations;
+
     private void Awake()
     {
         controls = new Controls();
+        animations = GetComponent<CharacterAnimation>();
+        characterAnimator = GetComponent<Animator>();
+        //Animator animator = GetComponent<Animator>();
+        //animatorParam = new AnimatorParam();
     }
 
     private void OnEnable()
@@ -46,7 +56,7 @@ public class PlayerControler : MonoBehaviour
         lookInput.Disable();
         attack.Disable();
     }
-    
+
     void Start()
     {
         attack.performed += SetIsAttacking;
@@ -60,6 +70,8 @@ public class PlayerControler : MonoBehaviour
         Move(move);
         Look(look);
 
+        //met a jour les param de l'animator pour le move
+
         if (!canAttack)
             currentTime = IncreaseTime(currentTime, maxTime);
         Attack();
@@ -68,12 +80,18 @@ public class PlayerControler : MonoBehaviour
     {
         Vector3 moveVector = new Vector3(move.x, 0, move.y);
         transform.Translate(moveVector * moveSpeed * Time.deltaTime);
-      
+
+        animations.UpdateForwardAnimatorParam(move.y);
+        animations.UpdateRightAnimatorParam(move.x);
+
+        //transform.position += transform.forward * _moveDir.y * moveSpeed * Time.deltaTime;
+        //transform.position += transform.right * _moveDir.x * moveSpeed * Time.deltaTime;
+
     }
     private void Look(Vector2 look) //horizontal rotation (vertical is on Detection_Item)
-    { 
+    {
         Vector2 delta = look * rotationSpeed * Time.deltaTime;
-        transform.Rotate(Vector3.up, delta.x); 
+        transform.Rotate(Vector3.up, delta.x);
     }
 
     #region Attack
@@ -105,5 +123,5 @@ public class PlayerControler : MonoBehaviour
     {
         isAttacking = _context.ReadValueAsButton();
     }
-    #endregion 
+    #endregion Attack
 }
