@@ -1,32 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class ZombieAI : MonoBehaviour
 {
-    [SerializeField] private Transform player;
-    private NavMeshAgent agent;
-    private Animator animator;
+    [SerializeField] GameObject zombie = null;
+    [SerializeField] GameObject target = null;
+    [SerializeField] NavMeshAgent agent = null;
 
-    [SerializeField] private float detectionRange = 10f;
-    [SerializeField] private float stoppingDistance = 2.5f, attackRange = 1.5f, attackCooldown = 2f;
-    [SerializeField] private string isRunningBool = "isRunning";
-    [SerializeField] private string attackTrigger = "Attack";
-    private float lastAttackTime;
-    private bool playerDetected = false;
+    //Animation
+    [SerializeField] Animator zombieAnimator = null;
+    [SerializeField] ZombieAnimation animations = null;
+
     private void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        zombie = this.gameObject;
+        zombie.SetActive(false);
     }
-    // Start is called before the first frame update
     void Start()
     {
-        
+        agent = GetComponent<NavMeshAgent>();
+        animations = GetComponent<ZombieAnimation>();
+        zombieAnimator = GetComponent<Animator>();
+
+        //ZombieSpawner.OnTimerEnd += Appear;
     }
 
-    // Update is called once per frame
+    void Update()
+    {
+  
+    }
+
+    //void Appear()
+    //{
+    //    zombie.SetActive(true);
+    //}
+
+    private void FixedUpdate() 
+    {
+        if (!target || !agent || !agent.enabled) return;
+        agent.SetDestination(target.transform.position);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+        if (!agent || collision.gameObject.layer != 13) return;
+        animations.UpdateAttackAnimatorParam(true);
+        agent.enabled = false;
+        Invoke("ReStart", 1);
+    }
+
+    void ReStart()
+    {
+        animations.UpdateAttackAnimatorParam(false);
+        agent.enabled = true;
+    }
+
+
+    #region travail Patrick
+    /*
     void Update()
     {
         if (player == null) return;
@@ -67,5 +102,6 @@ public class ZombieAI : MonoBehaviour
        animator.SetTrigger("Attack");
        Debug.Log("Zombie attaque le joueur !");
        lastAttackTime = Time.time;
-    }
+    }*/
+    #endregion
 }

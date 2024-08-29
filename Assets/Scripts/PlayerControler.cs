@@ -82,9 +82,10 @@ public class PlayerControler : MonoBehaviour
         Vector3 moveVector = new Vector3(move.x, 0, move.y);
         transform.Translate(moveVector * moveSpeed * Time.deltaTime);
 
-        //animations.UpdateForwardAnimatorParam(move.y);     //NULL REF ICI DONC J'AI COMMENTÉ
-        //animations.UpdateRightAnimatorParam(move.x);
+        animations.UpdateForwardAnimatorParam(move.y);     //NULL REF ICI DONC J'AI COMMENTÉ
+        animations.UpdateRightAnimatorParam(move.x);        //c'est probablement parce qu'il faut rajouter le component CharacterAnimation
 
+        //Autre version du mouvement, à retirer ultérieurement
         //transform.position += transform.forward * _moveDir.y * moveSpeed * Time.deltaTime;
         //transform.position += transform.right * _moveDir.x * moveSpeed * Time.deltaTime;
 
