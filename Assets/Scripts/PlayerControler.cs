@@ -11,20 +11,22 @@ public class PlayerControler : MonoBehaviour
     private InputAction lookInput;
 
     [SerializeField] float moveSpeed = 5f, rotationSpeed = 200f;
+    [SerializeField] bool canRotate = true;
+    [SerializeField] bool canMove = true;
 
-    //Attack
+
+    ////Attack
     [SerializeField] InputAction attack = null;
-
+    [SerializeField] Transform camera = null;
     [SerializeField] Bullet toSpawn = null;
     [SerializeField] Vector3 spawnPosition = Vector3.zero;
-    [SerializeField] float spawnForwardOffset = 1;
-    [SerializeField] float spawnUpOffset = 1.5f;
+    [SerializeField] float spawnForwardOffset = 1.2f;
+    //[SerializeField] float spawnUpOffset = 1.5f;
 
     [SerializeField] float currentTime = 0;
-    [SerializeField] float maxTime = 0.7f;
+    [SerializeField] float maxTime = 1f;
     [SerializeField] bool canAttack = true;
     [SerializeField] bool isAttacking = false;
-    [SerializeField] bool canRotate = true;
 
     //Animator
     //private AnimatorParam animatorParam;
@@ -37,7 +39,8 @@ public class PlayerControler : MonoBehaviour
         controls = new Controls();
         animations = GetComponent<CharacterAnimation>();
         characterAnimator = GetComponent<Animator>();
-        //Animator animator = GetComponent<Animator>();
+        Animator animator = GetComponent<Animator>();
+        //camera = GetComponentInChildren<Transform>();
         //animatorParam = new AnimatorParam();
     }
 
@@ -79,6 +82,7 @@ public class PlayerControler : MonoBehaviour
     }
     private void Move(Vector2 move)
     {
+        if (!canMove) return;
         Vector3 moveVector = new Vector3(move.x, 0, move.y);
         transform.Translate(moveVector * moveSpeed * Time.deltaTime);
 
@@ -94,6 +98,12 @@ public class PlayerControler : MonoBehaviour
         //transform.position += transform.right * _moveDir.x * moveSpeed * Time.deltaTime;
 
     }
+
+    public void SetCanRotate(bool _value)
+    {
+        canRotate = _value;
+    }
+
     private void Look(Vector2 look) //horizontal rotation (vertical is on Detection_Item)
     {
         if(canRotate)
@@ -107,14 +117,17 @@ public class PlayerControler : MonoBehaviour
     public void Attack()
     {
         if (!canAttack || !isAttacking) return;
-        SpawnProjectile();
+        animations.ShootAnimatorParam();
+        Invoke("SpawnProjectile", .4f);
         canAttack = false;
+        canMove = false;
     }
 
     private void SpawnProjectile()
     {
-        spawnPosition = transform.position + transform.forward * spawnForwardOffset;
-        Bullet _Projectile = Instantiate(toSpawn, spawnPosition, transform.rotation);
+        spawnPosition = camera.transform.position + transform.forward * spawnForwardOffset;
+        Bullet _Projectile = Instantiate(toSpawn, spawnPosition, camera.transform.rotation);
+        
     }
 
     float IncreaseTime(float _current, float _max)
@@ -124,6 +137,7 @@ public class PlayerControler : MonoBehaviour
         {
             _current = 0;
             canAttack = true;
+            canMove = true;
         }
         return _current;
     }
@@ -133,8 +147,5 @@ public class PlayerControler : MonoBehaviour
         isAttacking = _context.ReadValueAsButton();
     }
     #endregion Attack
-    public void SetCanRotate(bool _value)
-    {
-        canRotate = _value;
-    }
+
 }
