@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5714177696073194835}
   - component: {fileID: 1247731858279853510}
   - component: {fileID: -1386297906913116725}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ConcreteWall_Hole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
