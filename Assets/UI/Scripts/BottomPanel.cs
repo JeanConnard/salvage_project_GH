@@ -24,7 +24,12 @@ public class BottomPanel : MonoBehaviour
     public void SetCountText(int _ropeCount, int _fuelCount, int _sandCount, int _fabricCount, int _woodCount, int _engineCount)
     {
         // Pickup_Item _pickupItemRef = GetComponent<Pickup_Item>();
-        Debug.Log(_fuelCount);
+        Debug.Log("compte de rope" + _ropeCount);
+        Debug.Log("compte de fuel" + _fuelCount);
+        Debug.Log("compte de sand" + _sandCount);
+        Debug.Log("compte de fabric" + _fabricCount);
+        Debug.Log("compte de wood" + _woodCount);
+        Debug.Log("compte de engine" + _engineCount);
 
         ropeText.SetText(_ropeCount.ToString());
         fuelText.SetText(_fuelCount.ToString());

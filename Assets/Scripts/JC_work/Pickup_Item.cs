@@ -41,8 +41,9 @@ public class Pickup_Item : MonoBehaviour
     public Action<int, int, int, int, int, int> OnValueChanged = null;      //changes UI BottomPanel int
     public Action<bool, bool, bool, bool, bool, bool> OnBoolChange = null;  //changes UI BottomPanel bool
     public Action<bool> OnTargetAquired = null;
+    public Action<bool> OnCompletion = null;
 
-    ObjectPanelManager objectPanelRef;
+    [SerializeField] ObjectPanelManager objectPanelRef;
 
     private void Awake()
     {
@@ -60,14 +61,13 @@ public class Pickup_Item : MonoBehaviour
     {
         OnValueChanged += panelRef.SetCountText;
         //OnBoolChanged += objectPanelRef.UpdateBoolResult;
-        //OnComplete += panelRef.SetVisibility;
+        OnCompletion += objectPanelRef.SetCompleted;
     }
 
     void Update()
     {
         
     }
-
     public void GrabPossibility(bool _value)    //to know if the raycast targets an object
     {
         canGrab = _value;        
@@ -98,20 +98,24 @@ public class Pickup_Item : MonoBehaviour
         if(_value == 4) woodCount++;
         if(_value == 5) engineCount++;
 
-        ropeComplete = ropeCount >= 5;
-        fuelComplete = fuelCount >= 3;
-        sandComplete = sandCount >= 5;
-        fabricComplete = fabricCount >= 20;
-        woodComplete = woodCount >= 10;
-        engineComplete = engineCount >= 1;
-
+        CheckCompletion();
         OnValueChanged.Invoke(ropeCount, fuelCount, sandCount, fabricCount, woodCount, engineCount);
-        if (fuelCount >= 2)
-            OnBoolChange?.Invoke(ropeComplete, fuelComplete, sandComplete, fabricComplete, woodComplete, engineComplete);
+        //if (fuelCount >= 2)
+        //    OnBoolChange?.Invoke(ropeComplete, fuelComplete, sandComplete, fabricComplete, woodComplete, engineComplete);
         //OnBoolChanged?.Invoke(objectPanelRef.fuelComplete);
         //    panelRef.UpdateBoolResult(panelRef.fuelComplete);
 
-        if(ropeComplete && fuelComplete && sandComplete && fabricComplete && woodComplete && engineComplete)
-            objectPanelRef.SetVisibility();
+    }
+    void CheckCompletion()
+    {
+        ropeComplete = ropeCount >= 1;
+        fuelComplete = fuelCount >= 1;
+        sandComplete = sandCount >= 1;
+        fabricComplete = fabricCount >= 1;
+        woodComplete = woodCount >= 1;
+        engineComplete = engineCount >= 1;
+        if (ropeComplete && fuelComplete && sandComplete && fabricComplete && woodComplete && engineComplete)
+            OnCompletion?.Invoke(true);
+            
     }
 }
