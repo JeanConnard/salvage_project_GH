@@ -32,7 +32,8 @@ public class PlayerControler : MonoBehaviour
     //private AnimatorParam animatorParam;
     [SerializeField] Animator characterAnimator = null;
     [SerializeField] CharacterAnimation animations = null;
-    public CharacterAnimation Animations => animations;
+    [SerializeField] ZombieAI ennemy = null;
+   
 
     private void Awake()
     {
@@ -42,6 +43,8 @@ public class PlayerControler : MonoBehaviour
         Animator animator = GetComponent<Animator>();
         //camera = GetComponentInChildren<Transform>();
         //animatorParam = new AnimatorParam();
+
+      
     }
 
     private void OnEnable()
@@ -63,7 +66,9 @@ public class PlayerControler : MonoBehaviour
 
     void Start()
     {
+        //ennemy = GetComponent<ZombieAI>();
         attack.performed += SetIsAttacking;
+        ennemy.OnTargetReached += Death;
     }
 
     void Update()
@@ -123,7 +128,6 @@ public class PlayerControler : MonoBehaviour
     {
         spawnPosition = camera.transform.position + transform.forward * spawnForwardOffset;
         Bullet _Projectile = Instantiate(toSpawn, spawnPosition, camera.transform.rotation);
-        
     }
 
     float IncreaseTime(float _current, float _max)
@@ -144,4 +148,12 @@ public class PlayerControler : MonoBehaviour
     }
     #endregion Attack
 
+    void Death()
+    {
+        Debug.Log("ici");
+        animations.DeathAnimatorParam();
+        canAttack = false;
+        canMove= false;
+        canRotate = false;
+    }
 }

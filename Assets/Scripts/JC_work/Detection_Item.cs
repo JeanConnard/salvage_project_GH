@@ -32,20 +32,6 @@ public class Detection_Item : MonoBehaviour
 
     Ray screenRay = new Ray();
 
-    //Attack
-    //[SerializeField] InputAction attack = null;
-
-    //[SerializeField] Bullet toSpawn = null;
-    //[SerializeField] Vector3 spawnPosition = Vector3.zero;
-    //[SerializeField] float spawnForwardOffset = 1;
-    //[SerializeField] float spawnUpOffset = 1.5f;
-
-    //[SerializeField] float currentTime = 0;
-    //[SerializeField] float maxTime = 0.7f;
-    //[SerializeField] bool canAttack = true;
-    //[SerializeField] bool isAttacking = false;
-    
-
 
     private void Awake()
     {
@@ -56,14 +42,11 @@ public class Detection_Item : MonoBehaviour
     {
         lookInput = controls.AM.rotation;
         lookInput.Enable();
-        //attack = controls.AM.shoot;
-        //attack.Enable();
     }
 
     private void OnDisable()
     {
         lookInput.Disable();
-        //attack.Disable();
     }
     void Start()
     {
@@ -81,10 +64,6 @@ public class Detection_Item : MonoBehaviour
     {
         RotationCam();
         Detect();
-
-        //if (!canAttack)
-        //    currentTime = IncreaseTime(currentTime, maxTime);
-        //Attack();
     }
 
     void RotationCam()  //Vertical rotation
@@ -121,35 +100,5 @@ public class Detection_Item : MonoBehaviour
         canRotate = _value;
     }
 
-    //#region Attack
-    //public void Attack()
-    //{
-    //    if (!canAttack || !isAttacking) return;
-    //    SpawnProjectile();
-    //    canAttack = false;
-    //}
-
-    //private void SpawnProjectile()
-    //{
-    //    spawnPosition = transform.position + transform.forward * spawnForwardOffset;
-    //    Bullet _Projectile = Instantiate(toSpawn, spawnPosition, transform.rotation);
-
-    //}
-
-    //float IncreaseTime(float _current, float _max)
-    //{
-    //    _current += Time.deltaTime;
-    //    if (_current >= _max)
-    //    {
-    //        _current = 0;
-    //        canAttack = true;
-    //    }
-    //    return _current;
-    //}
-
-    //public void SetIsAttacking(InputAction.CallbackContext _context)
-    //{
-    //    isAttacking = _context.ReadValueAsButton();
-    //}
-    //#endregion Attack
+  
 }

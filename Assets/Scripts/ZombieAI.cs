@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,8 @@ using UnityEngine.AI;
 
 public class ZombieAI : MonoBehaviour
 {
+    public event Action OnTargetReached = null;
+
     [SerializeField] GameObject zombie = null;
     [SerializeField] GameObject target = null;
     [SerializeField] NavMeshAgent agent = null;
@@ -26,6 +29,8 @@ public class ZombieAI : MonoBehaviour
         zombieAnimator = GetComponent<Animator>();
 
         //ZombieSpawner.OnTimerEnd += Appear;
+
+        OnTargetReached += Test;
     }
 
     void Update()
@@ -50,6 +55,7 @@ public class ZombieAI : MonoBehaviour
         if (!agent || collision.gameObject.layer != 13) return;
         animations.UpdateAttackAnimatorParam(true);
         agent.enabled = false;
+        OnTargetReached?.Invoke();
         Invoke("ReStart", 1);
     }
 
@@ -59,6 +65,10 @@ public class ZombieAI : MonoBehaviour
         agent.enabled = true;
     }
 
+    void Test()
+    {
+        Debug.Log("test touché");
+    }
 
     #region travail Patrick
     /*

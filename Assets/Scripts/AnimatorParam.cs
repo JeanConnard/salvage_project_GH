@@ -7,8 +7,10 @@ public class AnimatorParam
     public const string FORWARD_PARAM = "forward";
     public const string RIGHT_PARAM = "right";
     public const string SHOOT_PARAM = "shoot";
+    public const string DEATH_PARAM = "death";
+
     public const string ZOMBIE_ATTACK_PARAM = "canAttack";
-    //public const string SPEED_PARAM = "speed";
+  
 
     //parametre de l'animator
     private static readonly int ForwardAxisParam = Animator.StringToHash(FORWARD_PARAM);
