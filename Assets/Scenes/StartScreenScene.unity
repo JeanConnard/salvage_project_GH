@@ -389,16 +389,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pressAnyKey: {fileID: 1806246703}
+  textToPrint:
+  - {fileID: 560084191}
+  - {fileID: 738659392}
+  - {fileID: 287713721}
   storyText: {fileID: 560084191}
   storyPage2: {fileID: 738659392}
   storyPage3: {fileID: 287713721}
+  canStart: 0
   alphaValue: 0.05
   currentTime: 0
   maxTime: 0.1
   sceneName: NewScene
-  textToPrint:
-  - {fileID: 738659392}
-  - {fileID: 287713721}
 --- !u!114 &321117824
 MonoBehaviour:
   m_ObjectHideFlags: 0

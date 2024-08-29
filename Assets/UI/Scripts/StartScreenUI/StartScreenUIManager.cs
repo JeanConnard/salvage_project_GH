@@ -16,7 +16,7 @@ public class StartScreenUIManager : MonoBehaviour
     [SerializeField] float alphaValue = 0.05f;
     [SerializeField] float currentTime = 0f;
     [SerializeField] float maxTime = 0.1f;
-    [SerializeField] string sceneName = "NewScene";
+    [SerializeField] string sceneName = "MainScene";
 
     // Start is called before the first frame update
     void Start()
@@ -78,9 +78,12 @@ public class StartScreenUIManager : MonoBehaviour
         int _size = textToPrint.Count;
         for (int i = 0; i < _size; i++)
         {
+            if (_size < 1)
+                return;
             Debug.Log(i);
             
             textToPrint[i].alpha = 0f;
+            textToPrint[i].gameObject.SetActive(true);
             if (textToPrint[i].alpha >= 1f)
             {
                 ReverseValue();
@@ -88,9 +91,10 @@ public class StartScreenUIManager : MonoBehaviour
             textToPrint[i].alpha += alphaValue;
             if (textToPrint[i].alpha < 0f)
             {
-                return;
+                textToPrint.RemoveAt(i);               
             }
             TextBehaviour(textToPrint[i]);
+
             //if (textToPrint[_size + 1] && textToPrint[_size +1].alpha < 0f)
             //    OpenScene();
         }
