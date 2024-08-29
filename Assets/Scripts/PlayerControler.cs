@@ -24,6 +24,7 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] float maxTime = 0.7f;
     [SerializeField] bool canAttack = true;
     [SerializeField] bool isAttacking = false;
+    [SerializeField] bool canRotate = true;
 
     //Animator
     //private AnimatorParam animatorParam;
@@ -91,8 +92,11 @@ public class PlayerControler : MonoBehaviour
     }
     private void Look(Vector2 look) //horizontal rotation (vertical is on Detection_Item)
     {
-        Vector2 delta = look * rotationSpeed * Time.deltaTime;
-        transform.Rotate(Vector3.up, delta.x);
+        if(canRotate)
+        {
+            Vector2 delta = look * rotationSpeed * Time.deltaTime;
+            transform.Rotate(Vector3.up, delta.x);
+        }
     }
 
     #region Attack
@@ -125,4 +129,8 @@ public class PlayerControler : MonoBehaviour
         isAttacking = _context.ReadValueAsButton();
     }
     #endregion Attack
+    public void SetCanRotate(bool _value)
+    {
+        canRotate = _value;
+    }
 }

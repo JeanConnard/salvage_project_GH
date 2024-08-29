@@ -8,12 +8,10 @@ public class FlatWrench : MonoBehaviour
     [SerializeField] float direction = 1f;
     [SerializeField] float currentTime = 0f;
     [SerializeField] float maxTime = 0.5f;
-
     void Start()
     {
 
     }
-
     void Update()
     {
         currentTime = IncreaseTime(currentTime, maxTime);

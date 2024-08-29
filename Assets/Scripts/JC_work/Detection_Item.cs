@@ -25,14 +25,13 @@ public class Detection_Item : MonoBehaviour
     [SerializeField] LayerMask itemLayer = 0;   //in Unity, put all 6 layers manually
     [SerializeField] Transform objectSelected = null;
     [SerializeField] bool canSelect = true;
+    [SerializeField] bool canRotate = true;
 
     [SerializeField] Pickup_Item grab = null;
     [SerializeField] TargetSwap reticleRef;
 
     Ray screenRay = new Ray();
-    //bool detected = false;  // Ne semblait pas être utilisé  //       //          //          //
-
-   
+    
     private void Awake()
     {
         controls = new Controls();
@@ -61,15 +60,18 @@ public class Detection_Item : MonoBehaviour
 
     void RotationCam()  //Vertical rotation
     {
-        Vector2 _look = lookInput.ReadValue<Vector2>();
-        Vector2 _rotation = _look * rotationSpeed * Time.deltaTime;
+        if (canRotate)
+        {            
+            Vector2 _look = lookInput.ReadValue<Vector2>();
+            Vector2 _rotation = _look * rotationSpeed * Time.deltaTime;
         
-        //Ancienne version à la place de ci-dessous
-        //transform.Rotate(Vector3.right, _rotation.y);
+            //Ancienne version à la place de ci-dessous
+            //transform.Rotate(Vector3.right, _rotation.y);
         
-        xRotation -= _rotation.y;
-        xRotation = Mathf.Clamp(xRotation, clampDown, clampUp);
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+            xRotation -= _rotation.y;
+            xRotation = Mathf.Clamp(xRotation, clampDown, clampUp);
+            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        }
 
     }
 
@@ -84,5 +86,9 @@ public class Detection_Item : MonoBehaviour
             objectSelected = _hitRay.transform;
             OnTargetDetected?.Invoke(_hitRay);
         }
+    }
+    public void SetCanRotate(bool _value)
+    {
+        canRotate = _value;
     }
 }
