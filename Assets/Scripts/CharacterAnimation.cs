@@ -35,4 +35,11 @@ public class CharacterAnimation : MonoBehaviour
         if (!characterAnimator) return;
         characterAnimator.SetTrigger(AnimatorParam.SHOOT_PARAM);
     }
+
+    public void DeathAnimatorParam()
+    {
+        if (!characterAnimator) return;
+        characterAnimator.SetTrigger(AnimatorParam.DEATH_PARAM);
+    }
+
 }
