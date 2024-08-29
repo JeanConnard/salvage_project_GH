@@ -29,4 +29,10 @@ public class CharacterAnimation : MonoBehaviour
         if (!characterAnimator) return;
         characterAnimator.SetFloat(AnimatorParam.RIGHT_PARAM, _value, dampRight, Time.deltaTime);
     }
+
+    public void ShootAnimatorParam()
+    {
+        if (!characterAnimator) return;
+        characterAnimator.SetTrigger(AnimatorParam.SHOOT_PARAM);
+    }
 }
