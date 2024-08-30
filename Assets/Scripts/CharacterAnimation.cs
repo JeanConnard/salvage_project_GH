@@ -30,6 +30,13 @@ public class CharacterAnimation : MonoBehaviour
         characterAnimator.SetFloat(AnimatorParam.RIGHT_PARAM, _value, dampRight, Time.deltaTime);
     }
 
+    public void UpdateRunAnimatorParam(bool _value)
+    {
+        Debug.Log("courrir à fond");
+        if (!characterAnimator) return;
+        characterAnimator.SetBool(AnimatorParam.RUN_PARAM, _value);
+    }
+
     public void ShootAnimatorParam()
     {
         if (!characterAnimator) return;

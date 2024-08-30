@@ -6,6 +6,7 @@ public class AnimatorParam
 {
     public const string FORWARD_PARAM = "forward";
     public const string RIGHT_PARAM = "right";
+    public const string RUN_PARAM = "run";
     public const string SHOOT_PARAM = "shoot";
     public const string DEATH_PARAM = "death";
 
