@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] float moveSpeed = 8;
     [SerializeField] int damage = 1;
     [SerializeField] Vector3 direction = Vector3.zero;
+    [SerializeField] LayerMask wallLayer = 14;   //in Unity, put all 6 layers manually
 
     void Start()
     {
@@ -33,6 +34,12 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other) 
     {
         DestructibleElement_Parent _target = other.GetComponent<DestructibleElement_Parent>(); 
+
+        if(other.gameObject.layer == wallLayer)
+        {
+            Destroy(gameObject);
+            Debug.Log("Hit wall");
+        }
 
         if (!_target) return;
         _target.AddHealth(-damage);

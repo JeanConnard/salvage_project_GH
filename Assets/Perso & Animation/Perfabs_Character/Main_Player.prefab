@@ -1736,6 +1736,9 @@ MonoBehaviour:
   itemLayer:
     serializedVersion: 2
     m_Bits: 8064
+  destructibleLayer:
+    serializedVersion: 2
+    m_Bits: 64
   objectSelected: {fileID: 0}
   canSelect: 1
   canRotate: 1
@@ -2027,8 +2030,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3448a9994fdf9b34fbb472c14cd55b73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 3
   rotationSpeed: 200
+  isRunning: 0
   canRotate: 1
   canMove: 1
   attack:
@@ -2050,6 +2054,7 @@ MonoBehaviour:
   isAttacking: 0
   characterAnimator: {fileID: 0}
   animations: {fileID: 0}
+  ennemy: {fileID: 768943830181977230, guid: 9b7829762d0fc954fa06f4afec0edfee, type: 3}
 --- !u!114 &6056252205759155426
 MonoBehaviour:
   m_ObjectHideFlags: 0

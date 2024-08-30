@@ -9,8 +9,11 @@ public class PlayerControler : MonoBehaviour
     private Controls controls;
     private InputAction moveinput;
     private InputAction lookInput;
+    private InputAction runInput;
 
-    [SerializeField] float moveSpeed = 5f, rotationSpeed = 200f;
+    [SerializeField] float moveSpeed = 3f;
+    [SerializeField] float rotationSpeed = 200f;
+    [SerializeField] bool isRunning = false;
     [SerializeField] bool canRotate = true;
     [SerializeField] bool canMove = true;
 
@@ -50,10 +53,11 @@ public class PlayerControler : MonoBehaviour
     private void OnEnable()
     {
         moveinput = controls.AM.Direction;
-        lookInput = controls.AM.rotation;
         moveinput.Enable();
+        lookInput = controls.AM.rotation;
         lookInput.Enable();
-
+        runInput = controls.AM.run;
+        runInput.Enable();
         attack = controls.AM.shoot;
         attack.Enable();
     }
@@ -61,47 +65,62 @@ public class PlayerControler : MonoBehaviour
     {
         moveinput.Disable();
         lookInput.Disable();
+        runInput.Disable();
         attack.Disable();
     }
 
     void Start()
     {
+        canMove = true;
         //ennemy = GetComponent<ZombieAI>();
         attack.performed += SetIsAttacking;
+        runInput.performed += SetIsRunning;
         ennemy.OnTargetReached += Death;
     }
 
     void Update()
     {
+         
         Vector2 move = moveinput.ReadValue<Vector2>();
         Vector2 look = lookInput.ReadValue<Vector2>();
 
         Move(move);
         Look(look);
 
-        //met a jour les param de l'animator pour le move
-
         if (!canAttack)
             currentTime = IncreaseTime(currentTime, maxTime);
         Attack();
     }
-    private void Move(Vector2 move)
+    private void Move(Vector2 _move)
     {
         if (!canMove) return;
-        Vector3 moveVector = new Vector3(move.x, 0, move.y);
+        Vector3 moveVector = new Vector3(_move.x, 0, _move.y);
+        if(_move.y >= 0.1 && isRunning)
+        {
+            transform.position += transform.forward * _move.y * (moveSpeed * 1.5f) * Time.deltaTime;
+            animations.UpdateRunAnimatorParam(true);
+        }
+        else
+        {
+        animations.UpdateRunAnimatorParam(false);
+
         transform.Translate(moveVector * moveSpeed * Time.deltaTime);
 
-        animations.UpdateForwardAnimatorParam(move.y);     //NULL REF ICI DONC J'AI COMMENTÉ
+        animations.UpdateForwardAnimatorParam(_move.y);     //NULL REF ICI DONC J'AI COMMENTÉ
+        animations.UpdateRightAnimatorParam(_move.x);        //c'est probablement parce qu'il faut rajouter le component CharacterAnimation
 
-        animations.UpdateRightAnimatorParam(move.x);        //c'est probablement parce qu'il faut rajouter le component CharacterAnimation
+        }
 
-        animations.UpdateRightAnimatorParam(move.x);
-
+        
 
         //Autre version du mouvement, à retirer ultérieurement
         //transform.position += transform.forward * _moveDir.y * moveSpeed * Time.deltaTime;
         //transform.position += transform.right * _moveDir.x * moveSpeed * Time.deltaTime;
+    }
 
+    void SetIsRunning(InputAction.CallbackContext _context)
+    {
+        isRunning = _context.ReadValueAsButton();
     }
 
     public void SetCanRotate(bool _value)
@@ -154,10 +173,7 @@ public class PlayerControler : MonoBehaviour
 
     void Death()
     {
-        Debug.Log("ici");
-        animations.DeathAnimatorParam();
-        canAttack = false;
-        canMove= false;
-        canRotate = false;
+        animations.DeathAnimatorParam(true);
+        OnDisable();
     }
 }

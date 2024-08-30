@@ -11,18 +11,20 @@ public class Detection_Item : MonoBehaviour
 {
     public event Action<RaycastHit> OnTargetDetected = null;
     public event Action<bool> OnHit = null;
+    public event Action<bool> OnHitDestructible = null;
 
     //Verticale cam rotation
     [SerializeField] Controls controls = null;
     [SerializeField] InputAction lookInput = null;
     [SerializeField] int rotationSpeed = 200;
     [SerializeField] float xRotation = 0f;
-    [SerializeField] float clampDown = -30f;
-    [SerializeField] float clampUp = 15f;
+    [SerializeField] float clampDown = -15f;
+    [SerializeField] float clampUp = 30f;
 
     //RayCast
     [SerializeField] float detectionRange = 20;
     [SerializeField] LayerMask itemLayer = 0;   //in Unity, put all 6 layers manually
+    [SerializeField] LayerMask destructibleLayer = 6;   //in Unity, put this layer maybe
     [SerializeField] Transform objectSelected = null;
     [SerializeField] bool canSelect = true;
     [SerializeField] bool canRotate = true;
@@ -58,12 +60,14 @@ public class Detection_Item : MonoBehaviour
         OnHit += grab.GrabPossibility;
         OnTargetDetected += grab.ObjectDefine;
         OnHit += reticleRef.UpdateBool;
+        //OnHitDestructible += reticleRef.UpdateBool2?; <-- Pour Monsieur Mathieu
     }
 
     void Update()
     {
         RotationCam();
         Detect();
+        DetectDestructible();
     }
 
     void RotationCam()  //Vertical rotation
@@ -94,6 +98,15 @@ public class Detection_Item : MonoBehaviour
             objectSelected = _hitRay.transform;
             OnTargetDetected?.Invoke(_hitRay);
         }
+    }
+
+    void DetectDestructible()
+    {
+        bool _hit = Physics.Raycast(transform.position, transform.forward, out RaycastHit _hitDestructible, detectionRange, destructibleLayer);
+        OnHitDestructible?.Invoke(_hit);
+        if (_hit)
+            Debug.Log("Touche le destructible");
+     
     }
     public void SetCanRotate(bool _value)
     {

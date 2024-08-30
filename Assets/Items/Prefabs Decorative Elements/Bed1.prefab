@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2725524694697908955}
   - component: {fileID: 3088167021386549348}
   - component: {fileID: 2085822925871330133}
+  - component: {fileID: 7440502632006521900}
+  - component: {fileID: 3437744694992339129}
   m_Layer: 6
   m_Name: Bed1
   m_TagString: Untagged
@@ -29,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.0314107, y: 0.000000059604645, z: 7.037241}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5815668950275790946}
   m_Father: {fileID: 0}
@@ -106,6 +108,53 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.54, y: 1.87, z: 4.04}
   m_Center: {x: 0, y: 0.95, z: 0}
+--- !u!54 &7440502632006521900
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3786146970698918715}
+  serializedVersion: 4
+  m_Mass: 1000
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &3437744694992339129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3786146970698918715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d756462287b9264f8b0885ab5cd12af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  rope: {fileID: 919132149155446097, guid: 9a3d9b1cd141bc543ad4474c2a1c300e, type: 3}
+  fuel: {fileID: 3936581699444774588, guid: 5d7d0698c52da7b419870a8e60cc1e35, type: 3}
+  wood: {fileID: 2207829367955490025, guid: 6ef0a7ad80c78824a8b656a9d49d0920, type: 3}
+  sand: {fileID: 2839769953826061895, guid: 101b55a5876103844b83d893289800e7, type: 3}
+  fabric: {fileID: 4667450452817121326, guid: 06322b20fcc1ba54784fca4086a8d987, type: 3}
+  enginePart: {fileID: 4667450452817121326, guid: 35d3e309039db3440ab1ca9d101a09e9, type: 3}
+  trash: {fileID: 7277489197590947818, guid: 3f1c6592a2d4d8e40a6bde1f1f07823c, type: 3}
 --- !u!1001 &6286973838815690633
 PrefabInstance:
   m_ObjectHideFlags: 0

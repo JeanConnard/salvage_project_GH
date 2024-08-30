@@ -180,58 +180,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e199de415d0ccc45b6e2911c324ddd1, type: 3}
---- !u!1 &910579031 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3786146970698918715, guid: 628ed2635d0407e45915f1cdc2da94eb, type: 3}
-  m_PrefabInstance: {fileID: 4323565282093839476}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &910579036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 910579031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d756462287b9264f8b0885ab5cd12af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  rope: {fileID: 919132149155446097, guid: 9a3d9b1cd141bc543ad4474c2a1c300e, type: 3}
-  fuel: {fileID: 3936581699444774588, guid: 5d7d0698c52da7b419870a8e60cc1e35, type: 3}
-  wood: {fileID: 2207829367955490025, guid: 6ef0a7ad80c78824a8b656a9d49d0920, type: 3}
-  sand: {fileID: 2839769953826061895, guid: 101b55a5876103844b83d893289800e7, type: 3}
-  fabric: {fileID: 4667450452817121326, guid: 06322b20fcc1ba54784fca4086a8d987, type: 3}
-  enginePart: {fileID: 4667450452817121326, guid: 35d3e309039db3440ab1ca9d101a09e9, type: 3}
-  trash: {fileID: 7277489197590947818, guid: 3f1c6592a2d4d8e40a6bde1f1f07823c, type: 3}
---- !u!54 &910579037
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 910579031}
-  serializedVersion: 4
-  m_Mass: 1000
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &936967816
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,32 +493,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3327849684123685995, guid: 628ed2635d0407e45915f1cdc2da94eb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3786146970698918715, guid: 628ed2635d0407e45915f1cdc2da94eb, type: 3}
       propertyPath: m_Name
       value: Bed1
       objectReference: {fileID: 0}
-    - target: {fileID: 3786146970698918715, guid: 628ed2635d0407e45915f1cdc2da94eb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6628938786426667736, guid: 628ed2635d0407e45915f1cdc2da94eb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3786146970698918715, guid: 628ed2635d0407e45915f1cdc2da94eb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 910579037}
-    - targetCorrespondingSourceObject: {fileID: 3786146970698918715, guid: 628ed2635d0407e45915f1cdc2da94eb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 910579036}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 628ed2635d0407e45915f1cdc2da94eb, type: 3}
 --- !u!1001 &6350501512919134490
 PrefabInstance:
@@ -580,37 +510,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -1386297906913116725, guid: 8a9bbe1d87b915048acb85272a05c926, type: 3}
-      propertyPath: m_Mass
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: -1386297906913116725, guid: 8a9bbe1d87b915048acb85272a05c926, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -1386297906913116725, guid: 8a9bbe1d87b915048acb85272a05c926, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -1386297906913116725, guid: 8a9bbe1d87b915048acb85272a05c926, type: 3}
-      propertyPath: m_ImplicitCom
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -1386297906913116725, guid: 8a9bbe1d87b915048acb85272a05c926, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -1386297906913116725, guid: 8a9bbe1d87b915048acb85272a05c926, type: 3}
-      propertyPath: m_ImplicitTensor
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 190090331396152589, guid: 8a9bbe1d87b915048acb85272a05c926, type: 3}
       propertyPath: m_Name
       value: ConcreteWall_Hole
-      objectReference: {fileID: 0}
-    - target: {fileID: 190090331396152589, guid: 8a9bbe1d87b915048acb85272a05c926, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 2775048024519242924, guid: 8a9bbe1d87b915048acb85272a05c926, type: 3}
       propertyPath: m_LocalPosition.x
@@ -652,34 +554,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6758065991045552564, guid: 8a9bbe1d87b915048acb85272a05c926, type: 3}
-      propertyPath: fuel
-      value: 
-      objectReference: {fileID: 3936581699444774588, guid: 5d7d0698c52da7b419870a8e60cc1e35, type: 3}
-    - target: {fileID: 6758065991045552564, guid: 8a9bbe1d87b915048acb85272a05c926, type: 3}
-      propertyPath: rope
-      value: 
-      objectReference: {fileID: 919132149155446097, guid: 9a3d9b1cd141bc543ad4474c2a1c300e, type: 3}
-    - target: {fileID: 6758065991045552564, guid: 8a9bbe1d87b915048acb85272a05c926, type: 3}
-      propertyPath: sand
-      value: 
-      objectReference: {fileID: 2839769953826061895, guid: 101b55a5876103844b83d893289800e7, type: 3}
-    - target: {fileID: 6758065991045552564, guid: 8a9bbe1d87b915048acb85272a05c926, type: 3}
-      propertyPath: wood
-      value: 
-      objectReference: {fileID: 2207829367955490025, guid: 6ef0a7ad80c78824a8b656a9d49d0920, type: 3}
-    - target: {fileID: 6758065991045552564, guid: 8a9bbe1d87b915048acb85272a05c926, type: 3}
-      propertyPath: trash
-      value: 
-      objectReference: {fileID: 7277489197590947818, guid: 3f1c6592a2d4d8e40a6bde1f1f07823c, type: 3}
-    - target: {fileID: 6758065991045552564, guid: 8a9bbe1d87b915048acb85272a05c926, type: 3}
-      propertyPath: fabric
-      value: 
-      objectReference: {fileID: 4667450452817121326, guid: 06322b20fcc1ba54784fca4086a8d987, type: 3}
-    - target: {fileID: 6758065991045552564, guid: 8a9bbe1d87b915048acb85272a05c926, type: 3}
-      propertyPath: enginePart
-      value: 
-      objectReference: {fileID: 4667450452817121326, guid: 35d3e309039db3440ab1ca9d101a09e9, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -735,14 +609,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5635765100363511760, guid: b861513d340ea7f46bf9d9c9b4d5e2e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8334886961700314466, guid: b861513d340ea7f46bf9d9c9b4d5e2e7, type: 3}
-      propertyPath: m_Mass
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 8334886961700314466, guid: b861513d340ea7f46bf9d9c9b4d5e2e7, type: 3}
-      propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
