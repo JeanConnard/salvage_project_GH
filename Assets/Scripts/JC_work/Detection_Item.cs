@@ -16,13 +16,13 @@ public class Detection_Item : MonoBehaviour
     //Verticale cam rotation
     [SerializeField] Controls controls = null;
     [SerializeField] InputAction lookInput = null;
-    [SerializeField] int rotationSpeed = 200;
+    [SerializeField] int rotationSpeed = 100;
     [SerializeField] float xRotation = 0f;
-    [SerializeField] float clampDown = -15f;
-    [SerializeField] float clampUp = 30f;
+    [SerializeField] float clampUp = -20f;
+    [SerializeField] float clampDown = 15f;
 
     //RayCast
-    [SerializeField] float detectionRange = 20;
+    [SerializeField] float detectionRange = 6f;
     [SerializeField] LayerMask itemLayer = 0;   //in Unity, put all 6 layers manually
     [SerializeField] LayerMask destructibleLayer = 6;   //in Unity, put this layer maybe
     [SerializeField] Transform objectSelected = null;

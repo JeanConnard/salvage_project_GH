@@ -80,6 +80,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""5bfa0bff-76de-428b-a020-30b61b8885f3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -247,6 +256,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8605ba8e-6cf7-4e5f-bb26-4aee0b564b2f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -261,6 +281,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_AM_grab = m_AM.FindAction("grab", throwIfNotFound: true);
         m_AM_shoot = m_AM.FindAction("shoot", throwIfNotFound: true);
         m_AM_run = m_AM.FindAction("run", throwIfNotFound: true);
+        m_AM_pause = m_AM.FindAction("pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -328,6 +349,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_AM_grab;
     private readonly InputAction m_AM_shoot;
     private readonly InputAction m_AM_run;
+    private readonly InputAction m_AM_pause;
     public struct AMActions
     {
         private @Controls m_Wrapper;
@@ -338,6 +360,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @grab => m_Wrapper.m_AM_grab;
         public InputAction @shoot => m_Wrapper.m_AM_shoot;
         public InputAction @run => m_Wrapper.m_AM_run;
+        public InputAction @pause => m_Wrapper.m_AM_pause;
         public InputActionMap Get() { return m_Wrapper.m_AM; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -365,6 +388,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @run.started += instance.OnRun;
             @run.performed += instance.OnRun;
             @run.canceled += instance.OnRun;
+            @pause.started += instance.OnPause;
+            @pause.performed += instance.OnPause;
+            @pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IAMActions instance)
@@ -387,6 +413,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @run.started -= instance.OnRun;
             @run.performed -= instance.OnRun;
             @run.canceled -= instance.OnRun;
+            @pause.started -= instance.OnPause;
+            @pause.performed -= instance.OnPause;
+            @pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IAMActions instance)
@@ -412,5 +441,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnGrab(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

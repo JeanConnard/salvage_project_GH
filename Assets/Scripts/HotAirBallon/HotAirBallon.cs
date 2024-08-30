@@ -5,6 +5,7 @@ using UnityEngine;
 public class HotAirBallon : MonoBehaviour
 {
     [SerializeField] PlayerControler playerControler;
+    [SerializeField] GameObject ballonEntry;
     [SerializeField] bool canFly = false;
     [SerializeField] float moveSpeed = 1.5f;
 
@@ -35,7 +36,8 @@ public class HotAirBallon : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         playerControler = other.GetComponent<PlayerControler>();
-        if (!playerControler) return;
+        if (!playerControler) return; 
+        
         Invoke("SetCanFly", 3.0f);
     }
     void Movement()
@@ -45,6 +47,7 @@ public class HotAirBallon : MonoBehaviour
     }
     void SetCanFly()
     {
+        ballonEntry.gameObject.SetActive(true);
         canFly = true;
     }
 

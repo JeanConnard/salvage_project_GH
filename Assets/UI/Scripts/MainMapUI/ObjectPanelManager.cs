@@ -21,6 +21,7 @@ public class ObjectPanelManager : MonoBehaviour
     [SerializeField] GameObject listPanel;
     [SerializeField] TextMeshProUGUI completionText;
     [SerializeField] GameObject hotAirBallon;
+    [SerializeField] Vector3 spawnPosition = new Vector3(25, 25.7f, 35);
 
     void Start()
     {        
@@ -44,22 +45,19 @@ public class ObjectPanelManager : MonoBehaviour
         //afficher message de réussite     
     }
     void CraftHotAirBalloon()
-    {
-        Instantiate(hotAirBallon);
-        //instantiate la montgolfière (définir l'endroit)
+    {               
+        Instantiate(hotAirBallon, spawnPosition, Quaternion.identity);
+    
     }
     public void UpdateBoolResult(bool _result)
     {
-        _result = true;
-        //Debug.Log("resultat de fuelcomplete: " + fuelComplete);
-        Debug.Log("resultat de _result: " + _result);        
+        _result = true;              
         //return true; 
     }
     public void SetCompleted(bool _value)
     {   
         listCompleted = _value;
-        SetVisibility();
-        Debug.Log("Show button ");
+        SetVisibility();        
     }
     void SetVisibility()
     {

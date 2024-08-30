@@ -7,9 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class DeathPanelManager : MonoBehaviour
 {
-    [SerializeField] GameObject mainPanel;
+    //[SerializeField] GameObject mainPanel;
     [SerializeField] GameObject deathPanel;
-    //[SerializeField] TextMeshProUGUI deathText;
     [SerializeField] bool isDead = false;
     [SerializeField] float startTime = 0f, maxTime = 4f;
 
@@ -31,8 +30,6 @@ public class DeathPanelManager : MonoBehaviour
     {
         isDead = _value;
         deathPanel.SetActive(true);
-        //mainPanel.SetActive(false);
-
     }
     float DeathTimer(ref float _current, float _max)
     {
