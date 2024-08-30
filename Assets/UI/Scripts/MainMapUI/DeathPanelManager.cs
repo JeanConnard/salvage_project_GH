@@ -21,16 +21,17 @@ public class DeathPanelManager : MonoBehaviour
     void Update()
     {
         if(isDead)
-            startTime = DeathTimer(startTime, maxTime);
+            DeathTimer(ref startTime, maxTime);
     }
     public void OnDeathBool(bool _value)
     {
         isDead = _value;
-    }
-    float DeathTimer(float _current, float _max)
-    {
         deathText.gameObject.SetActive(true);
         mainPanel.SetActive(false);
+
+    }
+    float DeathTimer(ref float _current, float _max)
+    {
         _current += Time.deltaTime;
         if (_current >= _max)
         {

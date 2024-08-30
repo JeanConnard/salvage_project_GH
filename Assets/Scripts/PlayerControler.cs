@@ -40,7 +40,7 @@ public class PlayerControler : MonoBehaviour
 
     //Death Event
     //Linked with DeathPanelManager
-    Action<bool> OnDeath = null; 
+    public event Action<bool> OnDeath = null; 
     [SerializeField] DeathPanelManager deathPanelRef = null;
    
 
@@ -178,7 +178,7 @@ public class PlayerControler : MonoBehaviour
     }
     #endregion Attack
 
-    void Death()
+    public void Death()
     {
         animations.DeathAnimatorParam(true);
         OnDisable();
