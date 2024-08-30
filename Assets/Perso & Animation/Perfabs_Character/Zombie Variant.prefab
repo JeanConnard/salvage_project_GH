@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombie: {fileID: 0}
-  target: {fileID: 0}
+  target: {fileID: 6141246878694160131, guid: 4516c7def7801b740871b8909e506125, type: 3}
   agent: {fileID: 0}
   zombieAnimator: {fileID: 0}
   animations: {fileID: 6276228681464893293}

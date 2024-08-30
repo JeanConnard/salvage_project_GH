@@ -173,7 +173,6 @@ public class PlayerControler : MonoBehaviour
 
     void Death()
     {
-        Debug.Log("ici");
         animations.DeathAnimatorParam(true);
         OnDisable();
     }

@@ -23,9 +23,8 @@ public class ZombieSpawner : MonoBehaviour
 
     void Update()
     {
-       if (canStart)
+        if (!canStart) return;
            
-
         currentTime += Time.deltaTime;
         if (currentTime >= timerTotal)
         {

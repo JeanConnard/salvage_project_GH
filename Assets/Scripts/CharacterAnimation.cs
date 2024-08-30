@@ -21,7 +21,6 @@ public class CharacterAnimation : MonoBehaviour
     {
         
         if (!characterAnimator) return;
-        Debug.Log(_value);
         characterAnimator.SetFloat(AnimatorParam.FORWARD_PARAM, _value, dampForward, Time.deltaTime);
     }
     public void UpdateRightAnimatorParam(float _value)
@@ -32,7 +31,6 @@ public class CharacterAnimation : MonoBehaviour
 
     public void UpdateRunAnimatorParam(bool _value)
     {
-        Debug.Log("courrir à fond");
         if (!characterAnimator) return;
         characterAnimator.SetBool(AnimatorParam.RUN_PARAM, _value);
     }
