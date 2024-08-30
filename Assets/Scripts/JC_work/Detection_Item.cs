@@ -19,7 +19,7 @@ public class Detection_Item : MonoBehaviour
     [SerializeField] int rotationSpeed = 100;
     [SerializeField] float xRotation = 0f;
     [SerializeField] float clampDown = -35f;
-    [SerializeField] float clampUp = 20f;
+    [SerializeField] float clampUp = 30f;
 
     //RayCast
     [SerializeField] float detectionRange = 6f;

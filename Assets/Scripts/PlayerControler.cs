@@ -46,7 +46,6 @@ public class PlayerControler : MonoBehaviour
     //Escape panel
     //Show Panel and pause the game
     [SerializeField] InputAction pauseGame = null;
-    public event Action<bool> OnPause = null;
     [SerializeField] EscapePanel escapePanelRef;
    
 
@@ -201,5 +200,4 @@ public class PlayerControler : MonoBehaviour
         Time.timeScale = 0;
         escapePanelRef.gameObject.SetActive(_value);
     }
-
 }

@@ -6,6 +6,8 @@ public class HotAirBallon : MonoBehaviour
 {
     [SerializeField] PlayerControler playerControler;
     [SerializeField] GameObject ballonEntry;
+    [SerializeField] GameObject winPanel;
+    [SerializeField] GameObject mainPanel;
     [SerializeField] bool canFly = false;
     [SerializeField] float moveSpeed = 1.5f;
 
@@ -47,7 +49,9 @@ public class HotAirBallon : MonoBehaviour
     }
     void SetCanFly()
     {
-        ballonEntry.gameObject.SetActive(true);
+        ballonEntry.SetActive(true);
+        winPanel.SetActive(true);
+        mainPanel.SetActive(false);
         canFly = true;
     }
 
