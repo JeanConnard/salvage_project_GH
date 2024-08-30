@@ -13,7 +13,7 @@ public class PlayerControler : MonoBehaviour
     private InputAction runInput;
 
     [SerializeField] float moveSpeed = 1.5f;
-    [SerializeField] float rotationSpeed = 150f;
+    [SerializeField] float rotationSpeed = 200f;
     [SerializeField] bool isRunning = false;
     [SerializeField] bool canRotate = true;
     [SerializeField] bool canMove = true;
