@@ -46,8 +46,6 @@ public class PlayerControler : MonoBehaviour
         Animator animator = GetComponent<Animator>();
         //camera = GetComponentInChildren<Transform>();
         //animatorParam = new AnimatorParam();
-
-      
     }
 
     private void OnEnable()
@@ -173,6 +171,7 @@ public class PlayerControler : MonoBehaviour
 
     void Death()
     {
+        Debug.Log("tu dois mourir");
         animations.DeathAnimatorParam(true);
         OnDisable();
     }
