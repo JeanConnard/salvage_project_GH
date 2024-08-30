@@ -36,6 +36,7 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] Animator characterAnimator = null;
     [SerializeField] CharacterAnimation animations = null;
     [SerializeField] ZombieAI ennemy = null;
+    
    
 
     private void Awake()
@@ -169,9 +170,8 @@ public class PlayerControler : MonoBehaviour
     }
     #endregion Attack
 
-    void Death()
+    public void Death()
     {
-        Debug.Log("tu dois mourir");
         animations.DeathAnimatorParam(true);
         OnDisable();
     }
