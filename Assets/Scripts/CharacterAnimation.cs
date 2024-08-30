@@ -36,10 +36,10 @@ public class CharacterAnimation : MonoBehaviour
         characterAnimator.SetTrigger(AnimatorParam.SHOOT_PARAM);
     }
 
-    public void DeathAnimatorParam()
+    public void DeathAnimatorParam(bool _value)
     {
         if (!characterAnimator) return;
-        characterAnimator.SetTrigger(AnimatorParam.DEATH_PARAM);
+        characterAnimator.SetBool(AnimatorParam.DEATH_PARAM, _value);
     }
 
 }

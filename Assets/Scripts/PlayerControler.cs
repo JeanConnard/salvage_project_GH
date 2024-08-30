@@ -66,6 +66,7 @@ public class PlayerControler : MonoBehaviour
 
     void Start()
     {
+        canMove = true;
         //ennemy = GetComponent<ZombieAI>();
         attack.performed += SetIsAttacking;
         ennemy.OnTargetReached += Death;
@@ -73,6 +74,7 @@ public class PlayerControler : MonoBehaviour
 
     void Update()
     {
+         
         Vector2 move = moveinput.ReadValue<Vector2>();
         Vector2 look = lookInput.ReadValue<Vector2>();
 
@@ -92,16 +94,11 @@ public class PlayerControler : MonoBehaviour
         transform.Translate(moveVector * moveSpeed * Time.deltaTime);
 
         animations.UpdateForwardAnimatorParam(move.y);     //NULL REF ICI DONC J'AI COMMENTÉ
-
         animations.UpdateRightAnimatorParam(move.x);        //c'est probablement parce qu'il faut rajouter le component CharacterAnimation
-
-        animations.UpdateRightAnimatorParam(move.x);
-
 
         //Autre version du mouvement, à retirer ultérieurement
         //transform.position += transform.forward * _moveDir.y * moveSpeed * Time.deltaTime;
         //transform.position += transform.right * _moveDir.x * moveSpeed * Time.deltaTime;
-
     }
 
     public void SetCanRotate(bool _value)
@@ -155,9 +152,7 @@ public class PlayerControler : MonoBehaviour
     void Death()
     {
         Debug.Log("ici");
-        animations.DeathAnimatorParam();
-        canAttack = false;
-        canMove= false;
-        canRotate = false;
+        animations.DeathAnimatorParam(true);
+        OnDisable();
     }
 }
