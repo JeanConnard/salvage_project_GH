@@ -23,9 +23,10 @@ public class DeathPanelManager : MonoBehaviour
         if(isDead)
             startTime = DeathTimer(startTime, maxTime);
     }
-    public void OnDeathBool(bool _value)
+    public void OnDeathBool()
     {
-        isDead = _value;
+        Debug.Log("hoooo");
+        isDead = true;
     }
     float DeathTimer(float _current, float _max)
     {

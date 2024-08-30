@@ -40,7 +40,7 @@ public class PlayerControler : MonoBehaviour
 
     //Death Event
     //Linked with DeathPanelManager
-    Action<bool> OnDeath = null; 
+    public event Action OnDeath = null; 
     [SerializeField] DeathPanelManager deathPanelRef = null;
    
 
@@ -78,11 +78,12 @@ public class PlayerControler : MonoBehaviour
     void Start()
     {
         canMove = true;
-        //ennemy = GetComponent<ZombieAI>();
         attack.performed += SetIsAttacking;
         runInput.performed += SetIsRunning;
-        ennemy.OnTargetReached += Death;
         OnDeath += deathPanelRef.OnDeathBool;
+
+        //ennemy = GetComponent<ZombieAI>();
+        //ennemy.OnTargetReached += Death;
     }
 
     void Update()
@@ -117,8 +118,6 @@ public class PlayerControler : MonoBehaviour
         animations.UpdateRightAnimatorParam(_move.x);        //c'est probablement parce qu'il faut rajouter le component CharacterAnimation
 
         }
-
-        
 
         //Autre version du mouvement, à retirer ultérieurement
         //transform.position += transform.forward * _moveDir.y * moveSpeed * Time.deltaTime;
@@ -178,10 +177,10 @@ public class PlayerControler : MonoBehaviour
     }
     #endregion Attack
 
-    void Death()
+    public void Death()
     {
+        OnDeath?.Invoke();
         animations.DeathAnimatorParam(true);
         OnDisable();
-        OnDeath?.Invoke(true);
     }
 }
