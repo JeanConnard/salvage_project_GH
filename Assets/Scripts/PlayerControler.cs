@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,7 +37,11 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] Animator characterAnimator = null;
     [SerializeField] CharacterAnimation animations = null;
     [SerializeField] ZombieAI ennemy = null;
-    
+
+    //Death Event
+    //Linked with DeathPanelManager
+    Action<bool> OnDeath = null; 
+    [SerializeField] DeathPanelManager deathPanelRef = null;
    
 
     private void Awake()
@@ -47,6 +52,8 @@ public class PlayerControler : MonoBehaviour
         Animator animator = GetComponent<Animator>();
         //camera = GetComponentInChildren<Transform>();
         //animatorParam = new AnimatorParam();
+        deathPanelRef = GetComponent<DeathPanelManager>();
+      
     }
 
     private void OnEnable()
@@ -75,6 +82,7 @@ public class PlayerControler : MonoBehaviour
         attack.performed += SetIsAttacking;
         runInput.performed += SetIsRunning;
         ennemy.OnTargetReached += Death;
+        OnDeath += deathPanelRef.OnDeathBool;
     }
 
     void Update()
@@ -170,9 +178,10 @@ public class PlayerControler : MonoBehaviour
     }
     #endregion Attack
 
-    public void Death()
+    void Death()
     {
         animations.DeathAnimatorParam(true);
         OnDisable();
+        OnDeath?.Invoke(true);
     }
 }
