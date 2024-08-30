@@ -71,6 +71,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""run"",
+                    ""type"": ""Button"",
+                    ""id"": ""9a8fcdba-d628-414d-8e48-d3a3bf4a14c5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -227,6 +236,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""74896f43-1052-4a84-82a6-63435c279016"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -240,6 +260,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_AM_inventory = m_AM.FindAction("inventory", throwIfNotFound: true);
         m_AM_grab = m_AM.FindAction("grab", throwIfNotFound: true);
         m_AM_shoot = m_AM.FindAction("shoot", throwIfNotFound: true);
+        m_AM_run = m_AM.FindAction("run", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -306,6 +327,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_AM_inventory;
     private readonly InputAction m_AM_grab;
     private readonly InputAction m_AM_shoot;
+    private readonly InputAction m_AM_run;
     public struct AMActions
     {
         private @Controls m_Wrapper;
@@ -315,6 +337,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @inventory => m_Wrapper.m_AM_inventory;
         public InputAction @grab => m_Wrapper.m_AM_grab;
         public InputAction @shoot => m_Wrapper.m_AM_shoot;
+        public InputAction @run => m_Wrapper.m_AM_run;
         public InputActionMap Get() { return m_Wrapper.m_AM; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -339,6 +362,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @shoot.started += instance.OnShoot;
             @shoot.performed += instance.OnShoot;
             @shoot.canceled += instance.OnShoot;
+            @run.started += instance.OnRun;
+            @run.performed += instance.OnRun;
+            @run.canceled += instance.OnRun;
         }
 
         private void UnregisterCallbacks(IAMActions instance)
@@ -358,6 +384,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @shoot.started -= instance.OnShoot;
             @shoot.performed -= instance.OnShoot;
             @shoot.canceled -= instance.OnShoot;
+            @run.started -= instance.OnRun;
+            @run.performed -= instance.OnRun;
+            @run.canceled -= instance.OnRun;
         }
 
         public void RemoveCallbacks(IAMActions instance)
@@ -382,5 +411,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnInventory(InputAction.CallbackContext context);
         void OnGrab(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnRun(InputAction.CallbackContext context);
     }
 }

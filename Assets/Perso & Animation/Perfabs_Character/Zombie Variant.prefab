@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fe938d9d2969c394da79ffd8b9999831, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.85
+      value: 4.83
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe938d9d2969c394da79ffd8b9999831, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000047683716
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe938d9d2969c394da79ffd8b9999831, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.36
+      value: 15.01
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe938d9d2969c394da79ffd8b9999831, type: 3}
       propertyPath: m_LocalRotation.w
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombie: {fileID: 0}
-  target: {fileID: 6141246878694160131, guid: 4516c7def7801b740871b8909e506125, type: 3}
+  target: {fileID: 0}
   agent: {fileID: 0}
   zombieAnimator: {fileID: 0}
   animations: {fileID: 6276228681464893293}
