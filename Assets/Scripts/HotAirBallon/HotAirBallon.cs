@@ -5,7 +5,7 @@ using UnityEngine;
 public class HotAirBallon : MonoBehaviour
 {
     [SerializeField] PlayerControler playerControler = null;
-    [SerializeField] bool 
+    //[SerializeField] bool 
     //quand on rentre dans le ballon
     //
     //Félicitations!

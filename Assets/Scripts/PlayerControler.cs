@@ -52,7 +52,7 @@ public class PlayerControler : MonoBehaviour
         Animator animator = GetComponent<Animator>();
         //camera = GetComponentInChildren<Transform>();
         //animatorParam = new AnimatorParam();
-        deathPanelRef = GetComponent<DeathPanelManager>();
+        //deathPanelRef = GetComponent<DeathPanelManager>();
       
     }
 
