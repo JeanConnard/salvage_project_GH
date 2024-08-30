@@ -7,8 +7,10 @@ public class TargetSwap : MonoBehaviour
 {
     [SerializeField] Texture simpleTarget;
     [SerializeField] Texture greenTarget;
+    [SerializeField] Texture redTarget;
     RawImage rawImage = null;
     [SerializeField] bool canBeSalvaged = false;
+    [SerializeField] bool canbeDestroyed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,11 @@ public class TargetSwap : MonoBehaviour
     }
     void UpdateTexture()
     {
-        rawImage.texture = canBeSalvaged ? greenTarget : simpleTarget;
+        rawImage.texture = canBeSalvaged ? greenTarget : canbeDestroyed? redTarget : simpleTarget;
+    }
+    public void UpdateDestroyedBool(bool _value)
+    {
+        canbeDestroyed = _value;
+        UpdateTexture();
     }
 }
