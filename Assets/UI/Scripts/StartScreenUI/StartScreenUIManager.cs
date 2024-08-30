@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StartScreenUIManager : MonoBehaviour
 {
@@ -11,25 +12,31 @@ public class StartScreenUIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI storyText;
     [SerializeField] TextMeshProUGUI storyPage2;
     [SerializeField] TextMeshProUGUI storyPage3;
+    [SerializeField] GameObject mouseControls;
     TextMeshProUGUI customText;
     [SerializeField] bool canStart = false;
+    [SerializeField] bool canSwitch = false;
+    [SerializeField] bool canTimerContinue = true;
+    [SerializeField] bool hasBeenPrinted = true;
     [SerializeField] float alphaValue = 0.05f;
-    [SerializeField] float currentTime = 0f;
-    [SerializeField] float maxTime = 0.1f;
+    [SerializeField] float currentTime = 0f, customCurrent = 0f;
+    [SerializeField] float maxTime = 0.1f, customMax = 3f;
     [SerializeField] string sceneName = "MainScene";
+    [SerializeField] int index = 0;
+    [SerializeField] bool indexChanged = false;
 
-    // Start is called before the first frame update
+ 
     void Start()
     {
     }
 
-    // Update is called once per frame
     void Update()
-    {
-        UpdateAlphaTimer(ref currentTime, maxTime);
+    {      
+        if(canTimerContinue)
+            UpdateAlphaTimer(ref currentTime, maxTime);
         KeyPressed();
         if (canStart)
-            UpdateTextAlphaTimer(currentTime, maxTime);
+            UpdateTextAlphaTimer(ref customCurrent, customMax);
 
     }
     float UpdateAlphaTimer(ref float _current, float _max)
@@ -59,9 +66,15 @@ public class StartScreenUIManager : MonoBehaviour
         if (Input.anyKeyDown)
         {
             pressAnyKey.gameObject.SetActive(false);
-            canStart = true;
-            storyText.gameObject.SetActive(true);            
-            TextBehaviour(storyText);
+            mouseControls.gameObject.SetActive(false);
+            canTimerContinue = false;
+            if (hasBeenPrinted)
+            {
+                canStart = true;
+                textToPrint[0].gameObject.SetActive(true);
+                Debug.Log(index);
+                hasBeenPrinted = false;
+            }
         }
     }
     void OpenScene()
@@ -71,42 +84,36 @@ public class StartScreenUIManager : MonoBehaviour
     void TextBehaviour(TextMeshProUGUI _text)
     {
         customText = _text;
-        //UpdateStoryTextList();
+        customText.gameObject.SetActive(true);
+        //customText.alpha = 0f;
+        //alphaValue = 0.05f;
     }
     void UpdateStoryTextList()
     {
-        int _size = textToPrint.Count;
-        for (int i = 0; i < _size; i++)
-        {
-            if (_size < 1)
-                return;
-            Debug.Log(i);
-            
-            textToPrint[i].alpha = 0f;
-            textToPrint[i].gameObject.SetActive(true);
-            if (textToPrint[i].alpha >= 1f)
+            Debug.Log("hello world");
+            int _size = textToPrint.Count;
+            if(index == _size -1)
             {
-                ReverseValue();
+                canStart = false;
+                OpenScene();
+            return;
             }
-            textToPrint[i].alpha += alphaValue;
-            if (textToPrint[i].alpha < 0f)
-            {
-                textToPrint.RemoveAt(i);               
-            }
-            TextBehaviour(textToPrint[i]);
-
-            //if (textToPrint[_size + 1] && textToPrint[_size +1].alpha < 0f)
-            //    OpenScene();
-        }
+            index += 1;
+            TextBehaviour(textToPrint[index]);
+            textToPrint[index -1].gameObject.SetActive(false);
     }
-    float UpdateTextAlphaTimer(float _current, float _max)
+    float UpdateTextAlphaTimer(ref float _customCurrent, float _customMax)
     {
-        _current += Time.deltaTime;
-        if (_current >= _max)
+        _customCurrent += Time.deltaTime;
+        if (_customCurrent >= _customMax)
         {
-            _current = 0f;
             UpdateStoryTextList();
+            _customCurrent = 0f;
         }
-        return _current;
+        return _customCurrent;
     }
+
+  
+        
+    
 }
