@@ -10,7 +10,7 @@ public class ZombieAI : MonoBehaviour
     public event Action OnTargetReached = null;
 
     [SerializeField] GameObject zombie = null;
-    [SerializeField] GameObject target = null;
+    [SerializeField] PlayerControler target = null;
     [SerializeField] NavMeshAgent agent = null;
 
     //Animation
@@ -28,20 +28,14 @@ public class ZombieAI : MonoBehaviour
         animations = GetComponent<ZombieAnimation>();
         zombieAnimator = GetComponent<Animator>();
 
-        //ZombieSpawner.OnTimerEnd += Appear;
-
-        OnTargetReached += Test;
+        OnTargetReached += target.Death;
+        
     }
 
     void Update()
     {
   
     }
-
-    //void Appear()
-    //{
-    //    zombie.SetActive(true);
-    //}
 
     private void FixedUpdate() 
     {
@@ -63,11 +57,6 @@ public class ZombieAI : MonoBehaviour
     {
         animations.UpdateAttackAnimatorParam(false);
         agent.enabled = true;
-    }
-
-    void Test()
-    {
-        Debug.Log("test touché");
     }
 
     #region travail Patrick

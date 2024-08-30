@@ -1730,8 +1730,8 @@ MonoBehaviour:
     m_Flags: 0
   rotationSpeed: 200
   xRotation: 0
-  clampDown: -30
-  clampUp: 15
+  clampDown: -15
+  clampUp: 30
   detectionRange: 20
   itemLayer:
     serializedVersion: 2
@@ -2054,7 +2054,7 @@ MonoBehaviour:
   isAttacking: 0
   characterAnimator: {fileID: 0}
   animations: {fileID: 0}
-  ennemy: {fileID: 0}
+  ennemy: {fileID: 768943830181977230, guid: 9b7829762d0fc954fa06f4afec0edfee, type: 3}
 --- !u!114 &6056252205759155426
 MonoBehaviour:
   m_ObjectHideFlags: 0

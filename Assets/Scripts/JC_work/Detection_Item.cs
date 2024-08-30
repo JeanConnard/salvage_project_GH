@@ -18,8 +18,8 @@ public class Detection_Item : MonoBehaviour
     [SerializeField] InputAction lookInput = null;
     [SerializeField] int rotationSpeed = 200;
     [SerializeField] float xRotation = 0f;
-    [SerializeField] float clampDown = -30f;
-    [SerializeField] float clampUp = 15f;
+    [SerializeField] float clampDown = -15f;
+    [SerializeField] float clampUp = 30f;
 
     //RayCast
     [SerializeField] float detectionRange = 20;
@@ -60,7 +60,7 @@ public class Detection_Item : MonoBehaviour
         OnHit += grab.GrabPossibility;
         OnTargetDetected += grab.ObjectDefine;
         OnHit += reticleRef.UpdateBool;
-        //OnHitDestructible += reticleRef.UpdateBool2?; <-- Pour Monsieur Mathieu
+        OnHitDestructible += reticleRef.UpdateDestroyedBool; 
     }
 
     void Update()

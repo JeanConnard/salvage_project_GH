@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 7888166391484158717}
   - component: {fileID: 7504381865926470337}
   - component: {fileID: 5513733128541398514}
+  - component: {fileID: 2397094878477719410}
   m_Layer: 0
   m_Name: CraftTable
   m_TagString: Untagged
@@ -531,6 +532,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2397094878477719410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4590492459474765567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a3d29ecd675d448bd2a8fcb093472d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  craftPanel: {fileID: 0}
+  cursor: {fileID: 4020582316858036881}
+  reticleRef: {fileID: 0}
+  detectionRef: {fileID: 0}
+  playerRef: {fileID: 0}
 --- !u!1 &4852027354658694251
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,6 +711,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33e1161dc340f9f438fff235bb3c9e16, type: 3}
+--- !u!1 &4020582316858036881 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8357665462952549835, guid: 33e1161dc340f9f438fff235bb3c9e16, type: 3}
+  m_PrefabInstance: {fileID: 4915571402672443226}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4359531701789657131 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8698620052416890737, guid: 33e1161dc340f9f438fff235bb3c9e16, type: 3}
