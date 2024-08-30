@@ -1730,8 +1730,8 @@ MonoBehaviour:
     m_Flags: 0
   rotationSpeed: 200
   xRotation: 0
-  clampDown: -30
-  clampUp: 15
+  clampDown: -15
+  clampUp: 30
   detectionRange: 20
   itemLayer:
     serializedVersion: 2
