@@ -60,7 +60,7 @@ public class Detection_Item : MonoBehaviour
         OnHit += grab.GrabPossibility;
         OnTargetDetected += grab.ObjectDefine;
         OnHit += reticleRef.UpdateBool;
-        //OnHitDestructible += reticleRef.UpdateBool2?; <-- Pour Monsieur Mathieu
+        OnHitDestructible += reticleRef.UpdateDestroyedBool; 
     }
 
     void Update()
