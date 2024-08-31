@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2955,6 +2955,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7440105166304796643, guid: 2ee2d8dd0876bbb4c952d0ff7bc19b63, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 22fbf04efe8677a4287d9b5021262ab7, type: 3}
     - target: {fileID: 7715109242022679604, guid: 2ee2d8dd0876bbb4c952d0ff7bc19b63, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3056,6 +3060,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8728330853767226927, guid: 2ee2d8dd0876bbb4c952d0ff7bc19b63, type: 3}
+      propertyPath: hotAirBallon
+      value: 
+      objectReference: {fileID: 6352068635947049797, guid: 591136557ecc0054b9bd24b4e47299cd, type: 3}
+    - target: {fileID: 8728330853767226927, guid: 2ee2d8dd0876bbb4c952d0ff7bc19b63, type: 3}
       propertyPath: listCompleted
       value: 0
       objectReference: {fileID: 0}
@@ -3139,13 +3147,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2627115317636709215, guid: 2ee2d8dd0876bbb4c952d0ff7bc19b63, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1800363479239795434, guid: 2ee2d8dd0876bbb4c952d0ff7bc19b63, type: 3}
       insertIndex: -1
       addedObject: {fileID: 879300598}
+    - targetCorrespondingSourceObject: {fileID: 7892391663566034066, guid: 2ee2d8dd0876bbb4c952d0ff7bc19b63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1195983746}
   m_SourcePrefab: {fileID: 100100000, guid: 2ee2d8dd0876bbb4c952d0ff7bc19b63, type: 3}
 --- !u!1 &700903401 stripped
 GameObject:
@@ -4991,6 +5003,38 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 302986072}
   m_SourcePrefab: {fileID: 100100000, guid: 0e1457d13b5fdd144b1112a2fc656245, type: 3}
+--- !u!1 &1195983744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7892391663566034066, guid: 2ee2d8dd0876bbb4c952d0ff7bc19b63, type: 3}
+  m_PrefabInstance: {fileID: 686893564}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1195983746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195983744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 22fbf04efe8677a4287d9b5021262ab7, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1001 &1215594830
 PrefabInstance:
   m_ObjectHideFlags: 0
