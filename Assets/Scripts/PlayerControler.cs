@@ -21,7 +21,7 @@ public class PlayerControler : MonoBehaviour
 
     ////Attack
     [SerializeField] InputAction attack = null;
-    [SerializeField] Transform playercamera = null;
+    [SerializeField] Transform camera = null;
     [SerializeField] Bullet toSpawn = null;
     [SerializeField] Vector3 spawnPosition = Vector3.zero;
     [SerializeField] float spawnForwardOffset = 1.2f;
@@ -163,8 +163,8 @@ public class PlayerControler : MonoBehaviour
 
     private void SpawnProjectile()
     {
-        spawnPosition = GetComponent<Camera>().transform.position + transform.forward * spawnForwardOffset;
-        Bullet _Projectile = Instantiate(toSpawn, spawnPosition, GetComponent<Camera>().transform.rotation);
+        spawnPosition = camera.transform.position + transform.forward * spawnForwardOffset;
+        Bullet _Projectile = Instantiate(toSpawn, spawnPosition, camera.transform.rotation);
     }
 
     float IncreaseTime(float _current, float _max)
