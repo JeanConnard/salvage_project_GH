@@ -495,19 +495,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f00884431b94b0a45a047a57444418fe, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f00884431b94b0a45a047a57444418fe, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f00884431b94b0a45a047a57444418fe, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000015454312
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f00884431b94b0a45a047a57444418fe, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000015454312
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f00884431b94b0a45a047a57444418fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -577,6 +577,7 @@ MonoBehaviour:
   ballonEntry: {fileID: 6684393709748376523}
   canFly: 0
   moveSpeed: 1.5
+  ballonRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!135 &3873063304670148782
 SphereCollider:
   m_ObjectHideFlags: 0

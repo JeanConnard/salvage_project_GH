@@ -56,14 +56,14 @@ public class BottomPanel : MonoBehaviour
         //Debug.Log(_sandCount);
     }
 
-    public void ColorText(bool _ropeBool, bool _fuelBool, bool _sandBool, bool _fabricBool, bool _woodBool, bool _engineBool)
-    {
-        Debug.Log("allo");
-        if(_ropeBool) ropeText.color = achievedColor;
-        if(_fuelBool) fuelText.color = achievedColor;
-        if(_sandBool) sandtext.color = achievedColor;
-        if(_fabricBool) fabricText.color = achievedColor;
-        if(_woodBool) woodText.color = achievedColor;
-        if(_engineBool) engineText.color = achievedColor;
-    }
+    //public void ColorText(bool _ropeBool, bool _fuelBool, bool _sandBool, bool _fabricBool, bool _woodBool, bool _engineBool)
+    //{
+    //    Debug.Log("allo");
+    //    if(_ropeBool) ropeText.color = achievedColor;
+    //    if(_fuelBool) fuelText.color = achievedColor;
+    //    if(_sandBool) sandtext.color = achievedColor;
+    //    if(_fabricBool) fabricText.color = achievedColor;
+    //    if(_woodBool) woodText.color = achievedColor;
+    //    if(_engineBool) engineText.color = achievedColor;
+    //}
 }

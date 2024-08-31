@@ -22,7 +22,8 @@ public class ObjectPanelManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI completionText;
     [SerializeField] GameObject hotAirBallon;
     [SerializeField] Vector3 spawnPosition = new Vector3(25f, 9.35f, 31.22f);
-    [SerializeField] Quaternion spawnRotation = new Quaternion(-90f, 0f, 0f, 0f);
+    [SerializeField] Quaternion spawnRotation = new Quaternion(0.7071068f, 0,0, -0.7071068f);
+
     void Start()
     {        
         Init();

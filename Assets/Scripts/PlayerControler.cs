@@ -29,6 +29,7 @@ public class PlayerControler : MonoBehaviour
 
     [SerializeField] float currentTime = 0;
     [SerializeField] float maxTime = 1f;
+    [SerializeField] bool freeToAttack = true;
     [SerializeField] bool canAttack = true;
     [SerializeField] bool isAttacking = false;
 
@@ -142,6 +143,11 @@ public class PlayerControler : MonoBehaviour
         canRotate = _value;
     }
 
+    public void SetStopAttack(bool _value)
+    {
+        freeToAttack = _value;
+    }
+
     private void Look(Vector2 look) //horizontal rotation (vertical is on Detection_Item)
     {
         if(canRotate)
@@ -181,6 +187,7 @@ public class PlayerControler : MonoBehaviour
 
     public void SetIsAttacking(InputAction.CallbackContext _context)
     {
+        if(!freeToAttack) return;
         isAttacking = _context.ReadValueAsButton();
     }
     #endregion Attack

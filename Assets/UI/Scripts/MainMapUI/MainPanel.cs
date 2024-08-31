@@ -10,6 +10,9 @@ public class MainPanel : MonoBehaviour
     [SerializeField] float distanceAllowed = 50f;
     [SerializeField] bool ballonReached = false;
 
+
+    [SerializeField] float distanceBetween;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +22,9 @@ public class MainPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!ballonReached)
+        distanceBetween = Vector3.Distance(ballonref.transform.position, playerRef.transform.position);
+
+        if (!ballonReached)
             CheckDistance();
     }
     void CheckDistance()
