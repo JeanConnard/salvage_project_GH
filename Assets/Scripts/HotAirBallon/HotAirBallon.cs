@@ -32,7 +32,7 @@ public class HotAirBallon : MonoBehaviour
     void Movement()
     {
         transform.position += transform.up * moveSpeed * Time.deltaTime;
-        transform.position += transform.forward * moveSpeed * Time.deltaTime;
+        transform.position -= transform.forward * moveSpeed * Time.deltaTime;
     }
     void SetCanFly()
     {

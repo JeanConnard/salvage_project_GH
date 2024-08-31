@@ -21,8 +21,8 @@ public class ObjectPanelManager : MonoBehaviour
     [SerializeField] GameObject listPanel;
     [SerializeField] TextMeshProUGUI completionText;
     [SerializeField] GameObject hotAirBallon;
-    [SerializeField] Vector3 spawnPosition = new Vector3(25, 25.7f, 35);
-
+    [SerializeField] Vector3 spawnPosition = new Vector3(25f, 9.35f, 31.22f);
+    [SerializeField] Quaternion spawnRotation = new Quaternion(-90f, 0f, 0f, 0f);
     void Start()
     {        
         Init();
@@ -46,7 +46,7 @@ public class ObjectPanelManager : MonoBehaviour
     }
     void CraftHotAirBalloon()
     {               
-        Instantiate(hotAirBallon, spawnPosition, Quaternion.identity);
+        Instantiate(hotAirBallon, spawnPosition, spawnRotation);
     
     }
     public void UpdateBoolResult(bool _result)

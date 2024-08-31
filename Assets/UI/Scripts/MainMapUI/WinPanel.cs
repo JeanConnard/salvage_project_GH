@@ -12,7 +12,7 @@ public class WinPanel : MonoBehaviour
     [SerializeField] TextMeshProUGUI trollTXT;
     [SerializeField] List<TextMeshProUGUI> textList = new List<TextMeshProUGUI>();
     [SerializeField] GameObject mainPanelRef;
-    [SerializeField] float currentTime = 0f, maxTime = 5f;
+    [SerializeField] float currentTime = 0f, maxTime = 6f;
     [SerializeField] int textIndex = 0;
     [SerializeField] bool canStart = true;
     
@@ -30,8 +30,7 @@ public class WinPanel : MonoBehaviour
     }
 
     float TextsTimer(float _current, float _max)
-    {
-        _current += Time.deltaTime;
+    {        _current += Time.deltaTime;
         if (canStart)
         {
 

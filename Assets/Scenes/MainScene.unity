@@ -2855,6 +2855,10 @@ PrefabInstance:
       propertyPath: m_Texture
       value: 
       objectReference: {fileID: 2800000, guid: 22fbf04efe8677a4287d9b5021262ab7, type: 3}
+    - target: {fileID: 7664410177145177860, guid: 2ee2d8dd0876bbb4c952d0ff7bc19b63, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7715109242022679604, guid: 2ee2d8dd0876bbb4c952d0ff7bc19b63, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
