@@ -25,13 +25,13 @@ public class Detection_Item : MonoBehaviour
     [SerializeField] LayerMask itemLayer = 0;   //in Unity, put all 6 layers manually
     [SerializeField] LayerMask destructibleLayer = 6;   //in Unity, put this layer maybe
     [SerializeField] Transform objectSelected = null;
-    [SerializeField] bool canSelect = true;
+    //[SerializeField] bool canSelect = true;
     [SerializeField] bool canRotate = true;
 
     [SerializeField] Pickup_Item grab = null;
     [SerializeField] TargetSwap reticleRef;
 
-    Ray screenRay = new Ray();
+    //Ray screenRay = new Ray();
 
 
     private void Awake()
