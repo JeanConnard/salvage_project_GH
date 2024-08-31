@@ -108,11 +108,11 @@ public class Pickup_Item : MonoBehaviour
     }
     void CheckCompletion()
     {
-        ropeComplete = ropeCount >= 1;
-        fuelComplete = fuelCount >= 1;
-        sandComplete = sandCount >= 1;
-        fabricComplete = fabricCount >= 1;
-        woodComplete = woodCount >= 1;
+        ropeComplete = ropeCount >= 5;
+        fuelComplete = fuelCount >= 3;
+        sandComplete = sandCount >= 5;
+        fabricComplete = fabricCount >= 20;
+        woodComplete = woodCount >= 10;
         engineComplete = engineCount >= 1;
         if (ropeComplete && fuelComplete && sandComplete && fabricComplete && woodComplete && engineComplete)
             OnCompletion?.Invoke(true);

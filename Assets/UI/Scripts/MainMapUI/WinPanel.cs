@@ -12,8 +12,9 @@ public class WinPanel : MonoBehaviour
     [SerializeField] TextMeshProUGUI trollTXT;
     [SerializeField] List<TextMeshProUGUI> textList = new List<TextMeshProUGUI>();
     [SerializeField] GameObject mainPanelRef;
-    [SerializeField] float currentTime = 0f, maxTime = 3f;
+    [SerializeField] float currentTime = 0f, maxTime = 5f;
     [SerializeField] int textIndex = 0;
+    [SerializeField] bool canStart = true;
     
 
     // Start is called before the first frame update
@@ -25,30 +26,41 @@ public class WinPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TextsTimer(ref currentTime, maxTime);
+        currentTime = TextsTimer(currentTime, maxTime);
     }
 
-    float TextsTimer(ref float _current, float _max)
+    float TextsTimer(float _current, float _max)
     {
         _current += Time.deltaTime;
-        if (_current >= _max)
+        if (canStart)
         {
-            _current = 0f;
-            TextBehaviour(textList[textIndex]);
+
+            if (_current >= _max)
+            {
+                canStart = false;
+                TextBehaviour();
+                _current = 0f;
+            }
         }
         return _current;
     }
-    void TextBehaviour(TextMeshProUGUI _text)
+    void TextBehaviour()
     {
+        Debug.Log(textList[textIndex]);
         if (textIndex < 0 || textIndex >= textList.Count - 1)
         {
             SceneManager.LoadScene("StartScreenScene");
             return;
         }
-        _text.gameObject.SetActive(false);
+        textList[textIndex].gameObject.SetActive(false);
         textIndex +=1 ;
+        CanStartTimer();
+    }
+    void CanStartTimer()
+    {
         textList[textIndex].gameObject.SetActive(true);
-
+        canStart = true;
+        currentTime = 0f;
     }
 
 }

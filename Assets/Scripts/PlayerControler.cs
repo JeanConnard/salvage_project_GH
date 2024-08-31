@@ -127,9 +127,6 @@ public class PlayerControler : MonoBehaviour
         animations.UpdateRightAnimatorParam(_move.x);        //c'est probablement parce qu'il faut rajouter le component CharacterAnimation
 
         }
-
-        
-
         //Autre version du mouvement, à retirer ultérieurement
         //transform.position += transform.forward * _moveDir.y * moveSpeed * Time.deltaTime;
         //transform.position += transform.right * _moveDir.x * moveSpeed * Time.deltaTime;
