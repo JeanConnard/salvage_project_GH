@@ -479,6 +479,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 899122731543100406, guid: 628ed2635d0407e45915f1cdc2da94eb, type: 3}
   m_PrefabInstance: {fileID: 54977611}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &56218056 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6072318783502735503, guid: 2ee2d8dd0876bbb4c952d0ff7bc19b63, type: 3}
+  m_PrefabInstance: {fileID: 686893564}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &94115730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2496,7 +2501,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6722713012922221823, guid: 2ee2d8dd0876bbb4c952d0ff7bc19b63, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -3241,7 +3247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainPanel: {fileID: 879300589}
-  deathText: {fileID: 1612586957}
+  deathPanel: {fileID: 56218056}
   isDead: 0
   startTime: 0
   maxTime: 4
@@ -5010,7 +5016,7 @@ PrefabInstance:
     - target: {fileID: 5244895288464509721, guid: 4516c7def7801b740871b8909e506125, type: 3}
       propertyPath: deathPanelRef
       value: 
-      objectReference: {fileID: 1873683263}
+      objectReference: {fileID: 879300593}
     - target: {fileID: 5296731918096007385, guid: 4516c7def7801b740871b8909e506125, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.35
@@ -6330,17 +6336,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7555391449501636514, guid: d7da4baac711f9c48adeea54116890c5, type: 3}
   m_PrefabInstance: {fileID: 1611824746}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1612586957 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3488007643847268153, guid: 2ee2d8dd0876bbb4c952d0ff7bc19b63, type: 3}
-  m_PrefabInstance: {fileID: 686893564}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1625629898 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9a3d9b1cd141bc543ad4474c2a1c300e, type: 3}
@@ -7078,17 +7073,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7174784866911898904, guid: d7da4baac711f9c48adeea54116890c5, type: 3}
   m_PrefabInstance: {fileID: 1274033205}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1873683263 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6722713012922221823, guid: 2ee2d8dd0876bbb4c952d0ff7bc19b63, type: 3}
-  m_PrefabInstance: {fileID: 686893564}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faf7cfcf5cd8d9d44b2edd86a7d114cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1873938815 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7174784866911898904, guid: d7da4baac711f9c48adeea54116890c5, type: 3}
@@ -8430,6 +8414,10 @@ PrefabInstance:
     - target: {fileID: 7174784866911898904, guid: d7da4baac711f9c48adeea54116890c5, type: 3}
       propertyPath: m_Name
       value: Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 7174784866911898904, guid: d7da4baac711f9c48adeea54116890c5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7555391449501636514, guid: d7da4baac711f9c48adeea54116890c5, type: 3}
       propertyPath: m_LocalPosition.x
