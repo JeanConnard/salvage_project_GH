@@ -35,6 +35,8 @@ public class Pickup_Item : MonoBehaviour
     
     [SerializeField] BottomPanel panelRef;
     [SerializeField] int ropeCount = 0, fuelCount = 0, sandCount = 0, fabricCount = 0, woodCount = 0, engineCount = 0;
+    [SerializeField] int ropeNecessary = 5, fuelNecessary = 3, sandNecessary = 5, fabricNecessary = 20, woodNecessary = 10, engineNecessary = 1;
+
     [SerializeField] bool ropeComplete = false, fuelComplete = false, sandComplete = false, 
                          fabricComplete = false, woodComplete = false, engineComplete = false;
     
@@ -108,14 +110,15 @@ public class Pickup_Item : MonoBehaviour
     }
     void CheckCompletion()
     {
-        ropeComplete = ropeCount >= 5;
-        fuelComplete = fuelCount >= 3;
-        sandComplete = sandCount >= 5;
-        fabricComplete = fabricCount >= 20;
-        woodComplete = woodCount >= 10;
-        engineComplete = engineCount >= 1;
+        ropeComplete = ropeCount >= ropeNecessary;
+        fuelComplete = fuelCount >= fuelNecessary;
+        sandComplete = sandCount >= sandNecessary;
+        fabricComplete = fabricCount >= fabricNecessary;
+        woodComplete = woodCount >= woodNecessary;
+        engineComplete = engineCount >= engineNecessary;
         if (ropeComplete && fuelComplete && sandComplete && fabricComplete && woodComplete && engineComplete)
             OnCompletion?.Invoke(true);
             
     }
+
 }
