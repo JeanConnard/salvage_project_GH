@@ -33,7 +33,7 @@ public class SunRotation : MonoBehaviour
             _current = 0f;
             rotationIndex++;
             Rotation();
-            Debug.Log(rotationIndex);
+            //Debug.Log(rotationIndex);
             if (rotationIndex >= 715)
                 isStillDay = false;
         }

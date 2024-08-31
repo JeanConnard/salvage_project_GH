@@ -6,17 +6,17 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[Serializable]
-public enum ObjectType
-{
-    NONE,
-    ROPE,
-    FUEL,
-    SAND,
-    FABRIC,
-    WOOD,
-    ENGINE_PIECE
-}
+//[Serializable]
+//public enum ObjectType
+//{
+//    NONE,
+//    ROPE,
+//    FUEL,
+//    SAND,
+//    FABRIC,
+//    WOOD,
+//    ENGINE_PIECE
+//}
 
 //Script a placer sur le player
 
@@ -31,7 +31,7 @@ public class Pickup_Item : MonoBehaviour
 
     [SerializeField] GameObject itemToInteract;
     
-    [SerializeField] ObjectType objectType = ObjectType.NONE;
+    //[SerializeField] ObjectType objectType = ObjectType.NONE;
     
     [SerializeField] BottomPanel panelRef;
     [SerializeField] int ropeCount = 0, fuelCount = 0, sandCount = 0, fabricCount = 0, woodCount = 0, engineCount = 0;

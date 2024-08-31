@@ -17,7 +17,7 @@ public class StartScreenUIManager : MonoBehaviour
     [SerializeField] GameObject mouseControls;
     TextMeshProUGUI customText;
     [SerializeField] bool canStart = false;
-    [SerializeField] bool canSwitch = false;
+    //[SerializeField] bool canSwitch = false;
     [SerializeField] bool canTimerContinue = true;
     [SerializeField] bool hasBeenPrinted = true;
     [SerializeField] float alphaValue = 0.05f;
@@ -25,7 +25,7 @@ public class StartScreenUIManager : MonoBehaviour
     [SerializeField] float maxTime = 0.1f, customMax = 3f;
     [SerializeField] string sceneName = "MainScene";
     [SerializeField] int index = 0;
-    [SerializeField] bool indexChanged = false;
+    //[SerializeField] bool indexChanged = false;
 
  
     void Start()

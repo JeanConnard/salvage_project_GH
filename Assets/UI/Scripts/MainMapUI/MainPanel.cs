@@ -5,33 +5,31 @@ using UnityEngine;
 public class MainPanel : MonoBehaviour
 {
     [SerializeField] GameObject winPanel;
-    [SerializeField] HotAirBallon ballonref;
+    //[SerializeField] HotAirBallon ballonref;
+    [SerializeField] Vector3 endPosition;
     [SerializeField] PlayerControler playerRef;
-    [SerializeField] float distanceAllowed = 50f;
+    [SerializeField] float distanceAllowed = 15f;
     [SerializeField] bool ballonReached = false;
 
 
     [SerializeField] float distanceBetween;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        endPosition = new Vector3(25, 34, 59);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        distanceBetween = Vector3.Distance(ballonref.transform.position, playerRef.transform.position);
-
         if (!ballonReached)
             CheckDistance();
     }
     void CheckDistance()
     {
-        Vector3 _ballonPos = ballonref.transform.position;
+        Vector3 _ballonPos = endPosition;
         Vector3 _playerPos = playerRef.transform.position;
-        if ((Vector3.Distance(_ballonPos, _playerPos) <= distanceAllowed))
+        distanceBetween = Vector3.Distance(endPosition, playerRef.transform.position);
+        if (distanceBetween <= distanceAllowed)
         {
             ballonReached = true;
             WinBehaviour();
