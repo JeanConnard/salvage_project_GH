@@ -9,8 +9,8 @@ public class HotAirBallon : MonoBehaviour
     [SerializeField] GameObject ballonEntry;
     [SerializeField] bool canFly = false;
     [SerializeField] float moveSpeed = 1.5f;
-    
-    
+    //[SerializeField] Quaternion ballonRotation;
+
     void Start()
     {
     }
@@ -21,6 +21,7 @@ public class HotAirBallon : MonoBehaviour
         if (canFly)
             Movement();
         
+        //BallonRotate();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -31,12 +32,18 @@ public class HotAirBallon : MonoBehaviour
     }
     void Movement()
     {
-        transform.position += transform.up * moveSpeed * Time.deltaTime;
-        transform.position -= transform.forward * moveSpeed * Time.deltaTime;
+        transform.position -= transform.up * moveSpeed * Time.deltaTime;
+        transform.position += transform.forward * moveSpeed * Time.deltaTime;
     }
+
     void SetCanFly()
     {
         ballonEntry.SetActive(true);        
         canFly = true;
     }
+
+    //void BallonRotate()   //pour calculer la rotation du ballon en Quaternion
+    //{
+    //    ballonRotation = transform.rotation;
+    //}
 }
