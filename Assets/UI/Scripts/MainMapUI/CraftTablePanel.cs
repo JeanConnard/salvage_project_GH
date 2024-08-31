@@ -14,7 +14,9 @@ public class CraftTablePanel : MonoBehaviour
     public Action<bool> OnPanelOpened = null;
 
     void Start()
-    {        
+    {
+        
+
         OnPanelOpened += detectionRef.SetCanRotate;
         OnPanelOpened += playerRef.SetCanRotate;
         OnPanelOpened += playerRef.SetStopAttack;
@@ -35,6 +37,7 @@ public class CraftTablePanel : MonoBehaviour
         Cursor.visible = true;
         OnPanelOpened?.Invoke(false);
 
+        Cursor.lockState = CursorLockMode.None;
     }
     private void OnTriggerExit(Collider other)
     {
@@ -43,5 +46,7 @@ public class CraftTablePanel : MonoBehaviour
         reticleRef.gameObject.SetActive(true);
         Cursor.visible = false;
         OnPanelOpened?.Invoke(true);
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

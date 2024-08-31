@@ -94,6 +94,7 @@ public class PlayerControler : MonoBehaviour
         OnDeath += deathPanelRef.OnDeathBool;
         pauseGame.performed += EscapePanel;
         //OnPause += 
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
