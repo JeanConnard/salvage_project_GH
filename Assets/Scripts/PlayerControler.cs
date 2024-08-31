@@ -12,7 +12,7 @@ public class PlayerControler : MonoBehaviour
     private InputAction lookInput;
     private InputAction runInput;
 
-    [SerializeField] float moveSpeed = 3f;
+    [SerializeField] float moveSpeed = 1.5f;
     [SerializeField] float rotationSpeed = 200f;
     [SerializeField] bool isRunning = false;
     [SerializeField] bool canRotate = true;
@@ -41,7 +41,12 @@ public class PlayerControler : MonoBehaviour
     //Death Event
     //Linked with DeathPanelManager
     public event Action<bool> OnDeath = null; 
-    [SerializeField] DeathPanelManager deathPanelRef = null;
+    [SerializeField] DeathPanelManager deathPanelRef;
+
+    //Escape panel
+    //Show Panel and pause the game
+    [SerializeField] InputAction pauseGame = null;
+    [SerializeField] EscapePanel escapePanelRef;
    
 
     private void Awake()
@@ -66,6 +71,8 @@ public class PlayerControler : MonoBehaviour
         runInput.Enable();
         attack = controls.AM.shoot;
         attack.Enable();
+        pauseGame = controls.AM.pause;
+        pauseGame.Enable();
     }
     private void OnDisable()
     {
@@ -73,6 +80,7 @@ public class PlayerControler : MonoBehaviour
         lookInput.Disable();
         runInput.Disable();
         attack.Disable();
+        pauseGame.Disable();
     }
 
     void Start()
@@ -83,6 +91,8 @@ public class PlayerControler : MonoBehaviour
         runInput.performed += SetIsRunning;
         ennemy.OnTargetReached += Death;
         OnDeath += deathPanelRef.OnDeathBool;
+        pauseGame.performed += EscapePanel;
+        //OnPause += 
     }
 
     void Update()
@@ -104,7 +114,7 @@ public class PlayerControler : MonoBehaviour
         Vector3 moveVector = new Vector3(_move.x, 0, _move.y);
         if(_move.y >= 0.1 && isRunning)
         {
-            transform.position += transform.forward * _move.y * (moveSpeed * 1.5f) * Time.deltaTime;
+            transform.position += transform.forward * _move.y * (moveSpeed * 5f) * Time.deltaTime;
             animations.UpdateRunAnimatorParam(true);
         }
         else
@@ -117,9 +127,6 @@ public class PlayerControler : MonoBehaviour
         animations.UpdateRightAnimatorParam(_move.x);        //c'est probablement parce qu'il faut rajouter le component CharacterAnimation
 
         }
-
-        
-
         //Autre version du mouvement, à retirer ultérieurement
         //transform.position += transform.forward * _moveDir.y * moveSpeed * Time.deltaTime;
         //transform.position += transform.right * _moveDir.x * moveSpeed * Time.deltaTime;
@@ -183,5 +190,11 @@ public class PlayerControler : MonoBehaviour
         animations.DeathAnimatorParam(true);
         OnDisable();
         OnDeath?.Invoke(true);
+    }
+    void EscapePanel(InputAction.CallbackContext _context)
+    {
+        bool _value = _context.ReadValueAsButton();
+        Time.timeScale = 0;
+        escapePanelRef.gameObject.SetActive(_value);
     }
 }

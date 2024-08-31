@@ -2030,8 +2030,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3448a9994fdf9b34fbb472c14cd55b73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  rotationSpeed: 200
+  moveSpeed: 1.5
+  rotationSpeed: 150
   isRunning: 0
   canRotate: 1
   canMove: 1
@@ -2054,7 +2054,18 @@ MonoBehaviour:
   isAttacking: 0
   characterAnimator: {fileID: 0}
   animations: {fileID: 0}
-  ennemy: {fileID: 768943830181977230, guid: 9b7829762d0fc954fa06f4afec0edfee, type: 3}
+  ennemy: {fileID: 0}
+  deathPanelRef: {fileID: 0}
+  pauseGame:
+    m_Name: Pause Game
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3c2616c9-7c00-4f1f-9d54-6bc12566b4cd
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  escapePanelRef: {fileID: 0}
 --- !u!114 &6056252205759155426
 MonoBehaviour:
   m_ObjectHideFlags: 0

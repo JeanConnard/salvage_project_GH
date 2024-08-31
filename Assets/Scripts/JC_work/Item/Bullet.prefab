@@ -123,6 +123,9 @@ MonoBehaviour:
   moveSpeed: 8
   damage: 1
   direction: {x: 0, y: 0, z: 0}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 6
 --- !u!54 &-4655101397823550942
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -43,7 +43,9 @@ public class TextTimerManager : MonoBehaviour
                 hours -= 1;
             }
             minutes -= 1;
-            OnTimeElapsed(hours, minutes);
+            OnTimeElapsed?.Invoke(hours, minutes);
+            if (hours <= 0 && minutes <= 0)
+                canStartCountDown = false;
         }
        
         return _current;

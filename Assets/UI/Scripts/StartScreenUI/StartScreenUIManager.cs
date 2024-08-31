@@ -8,10 +8,12 @@ using UnityEngine.UI;
 public class StartScreenUIManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI pressAnyKey;
+    [SerializeField] TextMeshProUGUI gameName;
     [SerializeField] List<TextMeshProUGUI> textToPrint = new List<TextMeshProUGUI>();
     [SerializeField] TextMeshProUGUI storyText;
     [SerializeField] TextMeshProUGUI storyPage2;
     [SerializeField] TextMeshProUGUI storyPage3;
+    [SerializeField] Button quitBTN;
     [SerializeField] GameObject mouseControls;
     TextMeshProUGUI customText;
     [SerializeField] bool canStart = false;
@@ -28,6 +30,8 @@ public class StartScreenUIManager : MonoBehaviour
  
     void Start()
     {
+        Cursor.visible = true;
+        quitBTN.onClick.AddListener(QuitGame);
     }
 
     void Update()
@@ -63,11 +67,14 @@ public class StartScreenUIManager : MonoBehaviour
     }
     void KeyPressed()
     {
-        if (Input.anyKeyDown)
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             pressAnyKey.gameObject.SetActive(false);
             mouseControls.gameObject.SetActive(false);
+            quitBTN.gameObject.SetActive(false);
+            gameName.gameObject.SetActive(false);
             canTimerContinue = false;
+            Cursor.visible = false;
             if (hasBeenPrinted)
             {
                 canStart = true;
@@ -90,7 +97,6 @@ public class StartScreenUIManager : MonoBehaviour
     }
     void UpdateStoryTextList()
     {
-            Debug.Log("hello world");
             int _size = textToPrint.Count;
             if(index == _size -1)
             {
@@ -112,7 +118,10 @@ public class StartScreenUIManager : MonoBehaviour
         }
         return _customCurrent;
     }
-
+    void QuitGame()
+    { 
+        Application.Quit();
+    }
   
         
     
