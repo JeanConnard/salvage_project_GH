@@ -47,7 +47,8 @@ public class ObjectPanelManager : MonoBehaviour
     }
     void CraftHotAirBalloon()
     {               
-        Instantiate(hotAirBallon, spawnPosition, spawnRotation);
+        //Instantiate(hotAirBallon, spawnPosition, spawnRotation);
+        hotAirBallon.SetActive(true);
     
     }
     public void UpdateBoolResult(bool _result)

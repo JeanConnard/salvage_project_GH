@@ -21,6 +21,7 @@ public class WinPanel : MonoBehaviour
     void Start()
     {
         mainPanelRef.SetActive(false);
+        textList[0].gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -30,10 +31,10 @@ public class WinPanel : MonoBehaviour
     }
 
     float TextsTimer(float _current, float _max)
-    {        _current += Time.deltaTime;
+    {        
+        _current += Time.deltaTime;
         if (canStart)
         {
-
             if (_current >= _max)
             {
                 canStart = false;
@@ -55,6 +56,7 @@ public class WinPanel : MonoBehaviour
         textIndex +=1 ;
         CanStartTimer();
     }
+
     void CanStartTimer()
     {
         textList[textIndex].gameObject.SetActive(true);
