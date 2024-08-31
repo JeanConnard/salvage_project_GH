@@ -19,7 +19,6 @@ public class ObjectPanelManager : MonoBehaviour
     [SerializeField] bool listCompleted = false;
     [SerializeField] GameObject requirementPanel;
     [SerializeField] GameObject listPanel;
-    //[SerializeField] GameObject panelBackground;
     [SerializeField] TextMeshProUGUI completionText;
     [SerializeField] GameObject hotAirBallon;
     [SerializeField] Vector3 spawnPosition = new Vector3(25f, 9.35f, 31.22f);
@@ -74,15 +73,8 @@ public class ObjectPanelManager : MonoBehaviour
         requirementPanel.SetActive(false);
         listPanel.SetActive(false);
         craftBTN.gameObject.SetActive(false);
-        //panelBackground.SetActive(false);
         completionText.gameObject.SetActive(true);
-        //Invoke("completionTextDebut", .5f);
         CraftHotAirBalloon();
-    }
-
-    void completionTextDebut()
-    {
-        completionText.gameObject.SetActive(true);
     }
 
 }

@@ -17,6 +17,7 @@ public class CraftTablePanel : MonoBehaviour
     {        
         OnPanelOpened += detectionRef.SetCanRotate;
         OnPanelOpened += playerRef.SetCanRotate;
+        OnPanelOpened += playerRef.SetStopAttack;
     }
 
     // Update is called once per frame
