@@ -67,6 +67,7 @@ public class MusicManager : MonoBehaviour
         timeElapsedMusic.Stop();
         winMusic.Stop();
         lostMusic.Play();
+        //test
     }
     void PlayMusic()
     {        
