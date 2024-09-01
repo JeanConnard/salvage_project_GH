@@ -11,7 +11,7 @@ public class EscapePanel : MonoBehaviour
     void Start()
     {
         Init();
-        //Cursor.visible = true;
+        Cursor.visible = true;
        
         quitBTN.onClick.AddListener(QuitGame);
         resumeBTN.onClick.AddListener(ResumeGame);        
