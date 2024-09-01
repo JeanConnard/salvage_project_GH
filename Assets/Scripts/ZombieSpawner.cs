@@ -10,7 +10,7 @@ public class ZombieSpawner : MonoBehaviour
     [SerializeField] bool canStart = false;
 
     [SerializeField] List<GameObject> zombies = new List<GameObject>();
-    [SerializeField] float timerTotal = 360f; //6 minutes (360 secondes)
+    [SerializeField] float timerTotal = 362f; //6 minutes (360 secondes)
     [SerializeField] float currentTime = 0;
     //[SerializeField] public event Action OnTimerEnd = null;
 

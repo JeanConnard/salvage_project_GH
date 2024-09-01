@@ -24,9 +24,9 @@ public class TableBehaviour : DestructibleElement_Parent
         float _random = Random.Range(-0.1f, 0.1f);
         Vector3 _spawnPosition = transform.position + transform.forward * _random + transform.up * 1;
 
-        Instantiate(fabric, _spawnPosition, transform.rotation);
         Instantiate(wood, _spawnPosition, transform.rotation);
         Instantiate(wood, _spawnPosition, transform.rotation);
         Instantiate(trash, _spawnPosition, transform.rotation);
+        Instantiate(fabric, _spawnPosition + transform.up * 2, transform.rotation);
     }
 }

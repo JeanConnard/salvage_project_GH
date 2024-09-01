@@ -44,6 +44,7 @@ public class PlayerControler : MonoBehaviour
     public event Action<bool> OnDeath = null; 
     [SerializeField] DeathPanelManager deathPanelRef;
     [SerializeField] MusicManager musicManager;
+    [SerializeField] bool dead = false;
 
     //Escape panel
     //Show Panel and pause the game
@@ -223,10 +224,12 @@ public class PlayerControler : MonoBehaviour
 
     public void Death()
     {
+        if(dead) return;
         animations.DeathAnimatorParam(true);
         OnDisable();
         OnDeath?.Invoke(true);
         OnLoose?.Invoke();
+        dead = true;
     }
     void EscapePanel(InputAction.CallbackContext _context)
     {
