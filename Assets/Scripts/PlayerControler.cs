@@ -223,7 +223,7 @@ public class PlayerControler : MonoBehaviour
     {
         animations.DeathAnimatorParam(true);
         OnDisable();
-        //OnDeath?.Invoke(true);
+        OnDeath?.Invoke(true);
         OnLoose?.Invoke();
     }
     void EscapePanel(InputAction.CallbackContext _context)

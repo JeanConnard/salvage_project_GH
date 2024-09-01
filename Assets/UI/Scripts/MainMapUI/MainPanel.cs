@@ -37,7 +37,7 @@ public class MainPanel : MonoBehaviour
         {
             ballonReached = true;
             WinBehaviour();
-            //OnWin?.Invoke();
+            OnWin?.Invoke();
         }
     }
     void WinBehaviour()

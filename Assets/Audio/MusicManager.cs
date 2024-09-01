@@ -25,9 +25,10 @@ public class MusicManager : MonoBehaviour
         //winMusic = GetComponent<AudioSource>();
 
         //firstMainMusic.Play();
-
-        firstMainMusic.PlayDelayed(6);
-        OnBool += OnWin;       
+        
+        firstMainMusic.PlayDelayed(4);
+        OnBool += OnWin;   
+        timeElapsedMusic.PlayDelayed(367);
     }
 
     // Update is called once per frame
@@ -56,10 +57,10 @@ public class MusicManager : MonoBehaviour
     }
     public void OnWin()
     {        
+        winMusic.Play();
         firstMainMusic.Stop();
         secondMainMusic.Stop();
         timeElapsedMusic.Stop();
-        winMusic.Play();
     }
     public void OnLoose()
     {
