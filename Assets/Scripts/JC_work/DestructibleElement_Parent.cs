@@ -17,14 +17,9 @@ public class DestructibleElement_Parent : MonoBehaviour
     [SerializeField] protected GameObject enginePart = null;
     [SerializeField] protected GameObject trash = null;
 
-    //[SerializeField] protected AudioSource audioSource;
-    //[SerializeField] protected AudioClip explosion;
-
 
     public virtual void Start()
     {
-        //AudioSource audioSource = GetComponent<AudioSource>();
-
         //rope = GetComponent<GameObject>();
         //fuel = GetComponent<GameObject>();
         //wood = GetComponent<GameObject>();
@@ -56,7 +51,6 @@ public class DestructibleElement_Parent : MonoBehaviour
         if (health == 0)
         {
             OnDestruction?.Invoke();
-            
         }
     }
 

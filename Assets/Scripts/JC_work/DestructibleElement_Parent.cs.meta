@@ -11,6 +11,7 @@ MonoImporter:
   - fabric: {instanceID: 0}
   - enginePart: {instanceID: 0}
   - trash: {fileID: 7277489197590947818, guid: 3f1c6592a2d4d8e40a6bde1f1f07823c, type: 3}
+  - soundManager: {fileID: 1776946499217744366, guid: 2ee435bafc52c6e41953d117dd1b0dbe, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -37,12 +37,14 @@ public class MainPanel : MonoBehaviour
         {
             ballonReached = true;
             WinBehaviour();
-            OnWin?.Invoke();
+            //OnWin?.Invoke();
         }
     }
     void WinBehaviour()
     {
         winPanel.SetActive(true);
+        playerRef.OnDisable();
+        Cursor.lockState = CursorLockMode.None;
     }
 
 }

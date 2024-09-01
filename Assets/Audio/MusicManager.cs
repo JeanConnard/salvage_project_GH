@@ -14,7 +14,8 @@ public class MusicManager : MonoBehaviour
     [SerializeField] bool canStartWinMusic = false;
     [SerializeField] bool canStartLostMusic = false;
     public event Action OnBool = null;
-    // Start is called before the first frame update
+
+
     void Start()
     {
         //firstMainMusic = GetComponent<AudioSource>(); 

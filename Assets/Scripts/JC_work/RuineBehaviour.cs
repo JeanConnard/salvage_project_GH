@@ -5,6 +5,7 @@ using UnityEngine;
 public class RuineBehaviour : DestructibleElement_Parent
 {
 
+
     public override void Start()
     {
         health = 7;

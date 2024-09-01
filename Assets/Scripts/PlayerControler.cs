@@ -49,6 +49,7 @@ public class PlayerControler : MonoBehaviour
     //Show Panel and pause the game
     [SerializeField] InputAction pauseGame = null;
     [SerializeField] EscapePanel escapePanelRef;
+    [SerializeField] WinPanel winPanelRef;
     public event Action OnLoose = null;
 
     Rigidbody rb;
@@ -80,7 +81,7 @@ public class PlayerControler : MonoBehaviour
         pauseGame = controls.AM.pause;
         pauseGame.Enable();
     }
-    private void OnDisable()
+    public void OnDisable()
     {
         moveinput.Disable();
         lookInput.Disable();
@@ -120,17 +121,18 @@ public class PlayerControler : MonoBehaviour
             currentTime = IncreaseTime(currentTime, maxTime);
         Attack();
     }
+
     private void Move(Vector2 _move)
     {
         if (!canMove) return;
         Vector3 moveVector = new Vector3(_move.x, 0, _move.y);
         if (_move.y >= 0.1 && isRunning)
         {
-            rb.drag = .5f;
-            rb.AddForce(transform.forward * (moveSpeed * 5f));
+            //rb.drag = .5f;
+            //rb.AddForce(transform.forward * 1.1f);
 
             //Deplacement Test 1
-            //transform.position += transform.forward * _move.y * (moveSpeed * 5f) * Time.deltaTime;
+            transform.position += transform.forward * _move.y * (moveSpeed * 5f) * Time.deltaTime;
 
             //Deplacement Test 2
             //transform.Translate(moveVector * (moveSpeed * 5f) * Time.deltaTime);
