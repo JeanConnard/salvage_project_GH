@@ -128,13 +128,8 @@ public class PlayerControler : MonoBehaviour
         Vector3 moveVector = new Vector3(_move.x, 0, _move.y);
         if (_move.y >= 0.1 && isRunning)
         {
-            rb.drag = .5f;
-            rb.AddForce(transform.forward * (moveSpeed * 5f));
-
-            //rb.velocity = transform.forward * _move.y * (moveSpeed * 5f) * Time.deltaTime;
-
             //Deplacement Test 1
-            //transform.position += transform.forward * _move.y * (moveSpeed * 5f) * Time.deltaTime;
+            transform.position += transform.forward * _move.y * (moveSpeed * 5f) * Time.deltaTime;
 
             //Deplacement Test 2
             //transform.Translate(moveVector * (moveSpeed * 5f) * Time.deltaTime);
@@ -142,6 +137,13 @@ public class PlayerControler : MonoBehaviour
             //{
             //    transform.Translate(moveVector * 0 * Time.deltaTime);
             //}
+
+            //Deplacement Test 3, mais glisse trop
+            //rb.drag = .5f;
+            //rb.AddForce(transform.forward * (moveSpeed * 5f));
+
+            //Deplacement Test 4, non aboutie
+            //rb.velocity = transform.forward * _move.y * (moveSpeed * 5f) * Time.deltaTime;
 
             animations.UpdateRunAnimatorParam(true);
         }
