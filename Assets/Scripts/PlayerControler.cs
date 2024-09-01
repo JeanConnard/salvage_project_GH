@@ -149,7 +149,7 @@ public class PlayerControler : MonoBehaviour
         }
         else
         {
-            //rb.drag = 5;
+            rb.drag = 5;
             animations.UpdateRunAnimatorParam(false);
 
             transform.Translate(moveVector * moveSpeed * Time.deltaTime);
