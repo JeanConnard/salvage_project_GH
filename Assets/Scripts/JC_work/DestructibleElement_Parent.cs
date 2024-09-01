@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class DestructibleElement_Parent : MonoBehaviour
@@ -16,8 +17,14 @@ public class DestructibleElement_Parent : MonoBehaviour
     [SerializeField] protected GameObject enginePart = null;
     [SerializeField] protected GameObject trash = null;
 
-    void Start()
+    //[SerializeField] protected AudioSource audioSource;
+    //[SerializeField] protected AudioClip explosion;
+
+
+    public virtual void Start()
     {
+        //AudioSource audioSource = GetComponent<AudioSource>();
+
         //rope = GetComponent<GameObject>();
         //fuel = GetComponent<GameObject>();
         //wood = GetComponent<GameObject>();
@@ -41,6 +48,7 @@ public class DestructibleElement_Parent : MonoBehaviour
     //        OnDestruction?.Invoke();
     //    }
     //}
+
     public void AddHealth(int _value)
     {
         health += _value;
@@ -48,6 +56,7 @@ public class DestructibleElement_Parent : MonoBehaviour
         if (health == 0)
         {
             OnDestruction?.Invoke();
+            
         }
     }
 

@@ -18,7 +18,6 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] bool canRotate = true;
     [SerializeField] bool canMove = true;
 
-
     ////Attack
     [SerializeField] InputAction attack = null;
     [SerializeField] Transform camera = null;
@@ -40,14 +39,16 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] ZombieAI ennemy = null;
 
     //Death Event
-    //Linked with DeathPanelManager
+    //Linked with DeathPanelManager and MusicManager
     public event Action<bool> OnDeath = null; 
     [SerializeField] DeathPanelManager deathPanelRef;
+    [SerializeField] MusicManager musicManager;
 
     //Escape panel
     //Show Panel and pause the game
     [SerializeField] InputAction pauseGame = null;
     [SerializeField] EscapePanel escapePanelRef;
+    public event Action OnTest = null;
 
     Rigidbody rb;
    
@@ -58,10 +59,11 @@ public class PlayerControler : MonoBehaviour
         animations = GetComponent<CharacterAnimation>();
         characterAnimator = GetComponent<Animator>();
         Animator animator = GetComponent<Animator>();
+        //musicManager = GetComponent<MusicManager>();
         //camera = GetComponentInChildren<Transform>();
         //animatorParam = new AnimatorParam();
         //deathPanelRef = GetComponent<DeathPanelManager>();
-      
+
     }
 
     private void OnEnable()
@@ -95,10 +97,10 @@ public class PlayerControler : MonoBehaviour
         ennemy.OnTargetReached += Death;
         OnDeath += deathPanelRef.OnDeathBool;
         pauseGame.performed += EscapePanel;
-        //OnPause += 
         Cursor.lockState = CursorLockMode.Locked;
 
         //Time.timeScale = Time.timeScale * 10;
+        rb= GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -120,11 +122,24 @@ public class PlayerControler : MonoBehaviour
         Vector3 moveVector = new Vector3(_move.x, 0, _move.y);
         if(_move.y >= 0.1 && isRunning)
         {
-            transform.position += transform.forward * _move.y * (moveSpeed * 5f) * Time.deltaTime;
+            rb.drag = .5f;
+            rb.AddForce(transform.forward * (moveSpeed * 5f));
+
+            //Deplacement Test 1
+            //transform.position += transform.forward * _move.y * (moveSpeed * 5f) * Time.deltaTime;
+
+            //Deplacement Test 2
+            //transform.Translate(moveVector * (moveSpeed * 5f) * Time.deltaTime);
+            //if(_move.y <= 0 || _move.x!=0)
+            //{
+            //    transform.Translate(moveVector * 0 * Time.deltaTime);
+            //}
+
             animations.UpdateRunAnimatorParam(true);
         }
         else
         {
+            rb.drag = 5;
             animations.UpdateRunAnimatorParam(false);
         
             transform.Translate(moveVector * moveSpeed * Time.deltaTime);
