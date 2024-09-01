@@ -27,8 +27,10 @@ public class MusicManager : MonoBehaviour
         //firstMainMusic.Play();
         
         firstMainMusic.PlayDelayed(4);
-        OnBool += OnWin;   
-        timeElapsedMusic.PlayDelayed(367);
+        secondMainMusic.PlayDelayed(193);
+        OnBool += OnWin;
+        Invoke("PlayTimeElapsedMusic", 367);
+       // timeElapsedMusic.PlayDelayed(367);
     }
 
     // Update is called once per frame
@@ -41,13 +43,11 @@ public class MusicManager : MonoBehaviour
         firstMainMusic.Stop();
         secondMainMusic.Stop();
         timeElapsedMusic.Play();
-
+        
     }
     public void UpdateWinBool(bool _value)
     {
-        canStartWinMusic = _value;
-        //OnBool?.Invoke();
-        
+        canStartWinMusic = _value;        
     }
     public void UpdateLostBool(bool _value)
     {
