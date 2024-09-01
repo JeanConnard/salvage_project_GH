@@ -7,32 +7,33 @@ public class EscapePanel : MonoBehaviour
 {
     [SerializeField] Button quitBTN = null;
     [SerializeField] Button resumeBTN = null;
-    // Start is called before the first frame update
+
     void Start()
     {
         Init();
-        Cursor.visible = true;
+        //Cursor.visible = true;
+       
         quitBTN.onClick.AddListener(QuitGame);
         resumeBTN.onClick.AddListener(ResumeGame);        
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        //Cursor.lockState = CursorLockMode.None;
     }
     private void Awake()
     {
     }
     void Init()
     {
-        
+     
     }
     public void ResumeGame()
     {        
         Time.timeScale = 1;
         gameObject.SetActive(false);
-        Cursor.visible = false;
+        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     public void QuitGame()
     {

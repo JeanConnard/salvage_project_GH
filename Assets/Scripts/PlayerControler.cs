@@ -48,6 +48,8 @@ public class PlayerControler : MonoBehaviour
     //Show Panel and pause the game
     [SerializeField] InputAction pauseGame = null;
     [SerializeField] EscapePanel escapePanelRef;
+
+    Rigidbody rb;
    
 
     private void Awake()
@@ -95,6 +97,8 @@ public class PlayerControler : MonoBehaviour
         pauseGame.performed += EscapePanel;
         //OnPause += 
         Cursor.lockState = CursorLockMode.Locked;
+
+        //Time.timeScale = Time.timeScale * 10;
     }
 
     void Update()
@@ -121,13 +125,13 @@ public class PlayerControler : MonoBehaviour
         }
         else
         {
-        animations.UpdateRunAnimatorParam(false);
+            animations.UpdateRunAnimatorParam(false);
+        
+            transform.Translate(moveVector * moveSpeed * Time.deltaTime);
+            //rb.AddForce(moveVector * moveSpeed);
 
-        transform.Translate(moveVector * moveSpeed * Time.deltaTime);
-
-        animations.UpdateForwardAnimatorParam(_move.y);     //NULL REF ICI DONC J'AI COMMENTÉ
-        animations.UpdateRightAnimatorParam(_move.x);        //c'est probablement parce qu'il faut rajouter le component CharacterAnimation
-
+            animations.UpdateForwardAnimatorParam(_move.y);     //NULL REF ICI DONC J'AI COMMENTÉ
+            animations.UpdateRightAnimatorParam(_move.x);        //c'est probablement parce qu'il faut rajouter le component CharacterAnimation
         }
         //Autre version du mouvement, à retirer ultérieurement
         //transform.position += transform.forward * _moveDir.y * moveSpeed * Time.deltaTime;
@@ -204,5 +208,6 @@ public class PlayerControler : MonoBehaviour
         bool _value = _context.ReadValueAsButton();
         Time.timeScale = 0;
         escapePanelRef.gameObject.SetActive(_value);
+        Cursor.lockState = CursorLockMode.None;
     }
 }
