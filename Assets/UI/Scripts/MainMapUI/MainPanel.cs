@@ -14,7 +14,6 @@ public class MainPanel : MonoBehaviour
     [SerializeField] MusicManager musicManager;
     public event Action OnWin;
 
-
     [SerializeField] float distanceBetween;
 
     void Start()
@@ -44,6 +43,7 @@ public class MainPanel : MonoBehaviour
     {
         winPanel.SetActive(true);
         playerRef.OnDisable();
+       
         Cursor.lockState = CursorLockMode.None;
     }
 
