@@ -18,6 +18,7 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] bool canRotate = true;
     [SerializeField] bool canMove = true;
 
+
     ////Attack
     [SerializeField] InputAction attack = null;
     [SerializeField] Transform camera = null;
@@ -48,7 +49,7 @@ public class PlayerControler : MonoBehaviour
     //Show Panel and pause the game
     [SerializeField] InputAction pauseGame = null;
     [SerializeField] EscapePanel escapePanelRef;
-    public event Action OnTest = null;
+    public event Action OnLoose = null;
 
     Rigidbody rb;
    
@@ -63,7 +64,7 @@ public class PlayerControler : MonoBehaviour
         //camera = GetComponentInChildren<Transform>();
         //animatorParam = new AnimatorParam();
         //deathPanelRef = GetComponent<DeathPanelManager>();
-
+      
     }
 
     private void OnEnable()
@@ -90,17 +91,20 @@ public class PlayerControler : MonoBehaviour
 
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         canMove = true;
         //ennemy = GetComponent<ZombieAI>();
         attack.performed += SetIsAttacking;
         runInput.performed += SetIsRunning;
         ennemy.OnTargetReached += Death;
         OnDeath += deathPanelRef.OnDeathBool;
+        OnDeath += musicManager.UpdateLostBool;
+        OnLoose += musicManager.OnLoose;
         pauseGame.performed += EscapePanel;
+        //OnPause += 
         Cursor.lockState = CursorLockMode.Locked;
 
         //Time.timeScale = Time.timeScale * 10;
-        rb= GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -120,7 +124,7 @@ public class PlayerControler : MonoBehaviour
     {
         if (!canMove) return;
         Vector3 moveVector = new Vector3(_move.x, 0, _move.y);
-        if(_move.y >= 0.1 && isRunning)
+        if (_move.y >= 0.1 && isRunning)
         {
             rb.drag = .5f;
             rb.AddForce(transform.forward * (moveSpeed * 5f));
@@ -141,7 +145,7 @@ public class PlayerControler : MonoBehaviour
         {
             rb.drag = 5;
             animations.UpdateRunAnimatorParam(false);
-        
+
             transform.Translate(moveVector * moveSpeed * Time.deltaTime);
             //rb.AddForce(moveVector * moveSpeed);
 
@@ -216,7 +220,8 @@ public class PlayerControler : MonoBehaviour
     {
         animations.DeathAnimatorParam(true);
         OnDisable();
-        OnDeath?.Invoke(true);
+        //OnDeath?.Invoke(true);
+        OnLoose?.Invoke();
     }
     void EscapePanel(InputAction.CallbackContext _context)
     {
