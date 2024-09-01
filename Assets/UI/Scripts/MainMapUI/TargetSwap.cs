@@ -12,7 +12,6 @@ public class TargetSwap : MonoBehaviour
     [SerializeField] bool canBeSalvaged = false;
     [SerializeField] bool canbeDestroyed = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         //this.GetComponentInChildren();
@@ -20,7 +19,6 @@ public class TargetSwap : MonoBehaviour
         rawImage = GetComponent<RawImage>();
     }
 
-    // Update is called once per frame
     void Update()
     {
 

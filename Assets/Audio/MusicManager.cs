@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     void Start()
     {
         AudioSource loopMusic = GetComponent<AudioSource>();      
@@ -13,7 +13,7 @@ public class MusicManager : MonoBehaviour
         //gameObject.GetComponent<AudioSource>().Play(false);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         

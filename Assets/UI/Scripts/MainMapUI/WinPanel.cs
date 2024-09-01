@@ -16,15 +16,12 @@ public class WinPanel : MonoBehaviour
     [SerializeField] int textIndex = 0;
     [SerializeField] bool canStart = true;
     
-
-    // Start is called before the first frame update
     void Start()
     {
         mainPanelRef.SetActive(false);
         textList[0].gameObject.SetActive(true);
     }
 
-    // Update is called once per frame
     void Update()
     {
         currentTime = TextsTimer(currentTime, maxTime);
@@ -44,6 +41,7 @@ public class WinPanel : MonoBehaviour
         }
         return _current;
     }
+
     void TextBehaviour()
     {
         Debug.Log(textList[textIndex]);

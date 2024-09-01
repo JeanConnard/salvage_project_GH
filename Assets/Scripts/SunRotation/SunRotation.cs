@@ -8,6 +8,7 @@ public class SunRotation : MonoBehaviour
     [SerializeField] float currentTime = 0f, maxTime = 0.5f;
     [SerializeField] bool isStillDay = true;
     [SerializeField] int rotationIndex = 0;
+    [SerializeField] int maxIndex = 715;
 
     void Start()
     {  
@@ -34,7 +35,7 @@ public class SunRotation : MonoBehaviour
             rotationIndex++;
             Rotation();
             //Debug.Log(rotationIndex);
-            if (rotationIndex >= 715)
+            if (rotationIndex >= maxIndex)
                 isStillDay = false;
         }
 
