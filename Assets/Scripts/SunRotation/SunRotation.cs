@@ -11,7 +11,8 @@ public class SunRotation : MonoBehaviour
     [SerializeField] int maxIndex = 715;
 
     void Start()
-    {  
+    {
+       
     }
 
     // Update is called once per frame
