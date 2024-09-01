@@ -3,7 +3,14 @@ guid: f4c563ab8bd737841b74d931be4a8d97
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - rope: {instanceID: 0}
+  - fuel: {instanceID: 0}
+  - wood: {instanceID: 0}
+  - sand: {instanceID: 0}
+  - fabric: {instanceID: 0}
+  - enginePart: {instanceID: 0}
+  - trash: {fileID: 7277489197590947818, guid: 3f1c6592a2d4d8e40a6bde1f1f07823c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

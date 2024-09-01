@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarBehaviour : DestructibleElement_Parent
 {
 
-    void Start()
+    public override void Start()
     {
         health = 5;
 

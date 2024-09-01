@@ -5,7 +5,7 @@ using UnityEngine;
 public class BedBehaviour : DestructibleElement_Parent
 {
 
-    void Start()
+    public override void Start()
     {
         health = 4;
 
@@ -19,6 +19,7 @@ public class BedBehaviour : DestructibleElement_Parent
 
     void Explosion()
     {
+    
         gameObject.SetActive(false);
 
         float _random = Random.Range(-0.1f, 0.1f);

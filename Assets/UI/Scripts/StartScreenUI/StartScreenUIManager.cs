@@ -32,6 +32,7 @@ public class StartScreenUIManager : MonoBehaviour
     {
         Cursor.visible = true;
         quitBTN.onClick.AddListener(QuitGame);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void Update()
