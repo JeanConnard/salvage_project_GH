@@ -1,25 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    [SerializeField] AudioSource loopMusic = null;
-    [SerializeField] AudioSource timeElapsedMusic = null;
-    [SerializeField] AudioSource lostMusic = null;
-    [SerializeField] AudioSource winMusic = null;
+    [SerializeField] AudioSource firstMainMusic;
+    [SerializeField] AudioSource secondMainMusic;
+    [SerializeField] AudioSource timeElapsedMusic;
+    [SerializeField] AudioSource lostMusic;
+    [SerializeField] AudioSource winMusic;
     [SerializeField] bool canStartWinMusic = false;
     [SerializeField] bool canStartLostMusic = false;
+    public event Action OnBool = null;
     // Start is called before the first frame update
     void Start()
     {
-        loopMusic = GetComponent<AudioSource>();      
-        timeElapsedMusic = GetComponent<AudioSource>();
-        lostMusic = GetComponent<AudioSource>();
-        winMusic = GetComponent<AudioSource>();
+        //firstMainMusic = GetComponent<AudioSource>(); 
+        //secondMainMusic = GetComponent<AudioSource>();
+        //timeElapsedMusic = GetComponent<AudioSource>();
+        //lostMusic = GetComponent<AudioSource>();
+        //winMusic = GetComponent<AudioSource>();
 
-        loopMusic.Play();
-        Invoke("PlayMusic", 367);
+        //firstMainMusic.Play();
+
+        firstMainMusic.PlayDelayed(6);
+        OnBool += OnWin;       
     }
 
     // Update is called once per frame
@@ -29,29 +36,42 @@ public class MusicManager : MonoBehaviour
     }
     void PlayTimeElapsedMusic()
     {
-        loopMusic.Stop();
+        firstMainMusic.Stop();
+        secondMainMusic.Stop();
         timeElapsedMusic.Play();
 
     }
     public void UpdateWinBool(bool _value)
     {
         canStartWinMusic = _value;
+        //OnBool?.Invoke();
+        
     }
     public void UpdateLostBool(bool _value)
     {
-        canStartLostMusic= _value;
+        canStartLostMusic= _value;              
+        OnLoose();
+        
     }
-    void OnWin()
-    {
-        loopMusic.Stop();
+    public void OnWin()
+    {        
+        firstMainMusic.Stop();
+        secondMainMusic.Stop();
         timeElapsedMusic.Stop();
         winMusic.Play();
     }
-    void OnLoose()
+    public void OnLoose()
     {
-        loopMusic.Stop();
+        firstMainMusic.Stop();
+        secondMainMusic.Stop();
         timeElapsedMusic.Stop();
         winMusic.Stop();
         lostMusic.Play();
+    }
+    void PlayMusic()
+    {        
+        winMusic.Stop();
+        timeElapsedMusic.Stop();
+        secondMainMusic.Play();
     }
 }

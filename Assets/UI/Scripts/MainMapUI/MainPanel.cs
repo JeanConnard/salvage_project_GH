@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class MainPanel : MonoBehaviour
     [SerializeField] PlayerControler playerRef;
     [SerializeField] float distanceAllowed = 15f;
     [SerializeField] bool ballonReached = false;
+    [SerializeField] MusicManager musicManager;
+    public event Action OnWin;
 
 
     [SerializeField] float distanceBetween;
@@ -17,6 +20,7 @@ public class MainPanel : MonoBehaviour
     void Start()
     {
         endPosition = new Vector3(25, 34, 59);
+        OnWin += musicManager.OnWin;
     }
 
     void Update()
@@ -24,7 +28,7 @@ public class MainPanel : MonoBehaviour
         if (!ballonReached)
             CheckDistance();
     }
-    void CheckDistance()
+    public void CheckDistance()
     {
         Vector3 _ballonPos = endPosition;
         Vector3 _playerPos = playerRef.transform.position;
@@ -33,6 +37,7 @@ public class MainPanel : MonoBehaviour
         {
             ballonReached = true;
             WinBehaviour();
+            OnWin?.Invoke();
         }
     }
     void WinBehaviour()
