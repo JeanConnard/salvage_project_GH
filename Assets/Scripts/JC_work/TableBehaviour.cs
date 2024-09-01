@@ -27,6 +27,6 @@ public class TableBehaviour : DestructibleElement_Parent
         Instantiate(wood, _spawnPosition, transform.rotation);
         Instantiate(wood, _spawnPosition, transform.rotation);
         Instantiate(trash, _spawnPosition, transform.rotation);
-        Instantiate(fabric, _spawnPosition + transform.up * 2, transform.rotation);
+        Instantiate(fabric, _spawnPosition + transform.up * 1.5f, transform.rotation);
     }
 }
