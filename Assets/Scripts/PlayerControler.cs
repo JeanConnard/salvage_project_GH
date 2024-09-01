@@ -128,11 +128,13 @@ public class PlayerControler : MonoBehaviour
         Vector3 moveVector = new Vector3(_move.x, 0, _move.y);
         if (_move.y >= 0.1 && isRunning)
         {
-            //rb.drag = .5f;
-            //rb.AddForce(transform.forward * 1.1f);
+            rb.drag = .5f;
+            rb.AddForce(transform.forward * (moveSpeed * 5f));
+
+            //rb.velocity = transform.forward * _move.y * (moveSpeed * 5f) * Time.deltaTime;
 
             //Deplacement Test 1
-            transform.position += transform.forward * _move.y * (moveSpeed * 5f) * Time.deltaTime;
+            //transform.position += transform.forward * _move.y * (moveSpeed * 5f) * Time.deltaTime;
 
             //Deplacement Test 2
             //transform.Translate(moveVector * (moveSpeed * 5f) * Time.deltaTime);
@@ -145,11 +147,10 @@ public class PlayerControler : MonoBehaviour
         }
         else
         {
-            rb.drag = 5;
+            //rb.drag = 5;
             animations.UpdateRunAnimatorParam(false);
 
             transform.Translate(moveVector * moveSpeed * Time.deltaTime);
-            //rb.AddForce(moveVector * moveSpeed);
 
             animations.UpdateForwardAnimatorParam(_move.y);     //NULL REF ICI DONC J'AI COMMENTÉ
             animations.UpdateRightAnimatorParam(_move.x);        //c'est probablement parce qu'il faut rajouter le component CharacterAnimation
