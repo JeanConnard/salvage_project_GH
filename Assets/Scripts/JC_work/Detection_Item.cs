@@ -57,8 +57,8 @@ public class Detection_Item : MonoBehaviour
         if (!grab) return;
 
         OnHit += grab.GrabPossibility;
-        OnTargetDetected += grab.ObjectDefine;
         OnHit += reticleRef.UpdateBool;
+        OnTargetDetected += grab.ObjectDefine;
         OnHitDestructible += reticleRef.UpdateDestroyedBool; 
     }
 
